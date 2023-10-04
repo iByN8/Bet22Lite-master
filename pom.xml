@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>bets</groupId>
-	<artifactId>bets</artifactId>
+	<groupId>is2</groupId>
+	<artifactId>is2</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<build>
@@ -61,10 +61,10 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.source>1.8</maven.compiler.source>
 
-		<sonar.organization>change your data</sonar.organization>
+		<sonar.organization>jonanderjimenez</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
-		<sonar.projectKey>change your data</sonar.projectKey>
-		<sonar.login>change your data</sonar.login>
+		<sonar.projectKey>jonanderjimenez_probaproiektua</sonar.projectKey>
+		<sonar.login>d99a06d5101c4dd815d1bd33c5d47966c3e368f2</sonar.login>
 	</properties>
 
 	<!-- https://mvnrepository.com/artifact/junit/junit -->
