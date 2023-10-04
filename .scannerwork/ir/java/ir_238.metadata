@@ -1,0 +1,5 @@
+businessLogic.BLFacadeImplementation#apustuaEzabatu(LRegistered;Ldomain/ApustuAnitza;)V
+==
+close dataAccess.DataAccess#close()V
+open dataAccess.DataAccess#open(Z)V
+apustuaEzabatu dataAccess.DataAccess#apustuaEzabatu(LRegistered;Ldomain/ApustuAnitza;)V

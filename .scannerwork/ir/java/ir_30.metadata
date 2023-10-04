@@ -1,0 +1,9 @@
+dataAccess.DataAccess#ApustuaIrabazi(Ldomain/ApustuAnitza;)V
+null
+java.util.Date#<init>()V
+java.util.Date#instance-init#
+==
+getUser domain.ApustuAnitza#getUser()LRegistered;
+setEgoera domain.ApustuAnitza#setEgoera(Ljava/lang/String;)V
+getApustuAnitzaNumber domain.ApustuAnitza#getApustuAnitzaNumber()Ljava/lang/Integer;
+getBalioa domain.ApustuAnitza#getBalioa()Ljava/lang/Double;

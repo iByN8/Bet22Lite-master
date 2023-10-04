@@ -1,0 +1,7 @@
+organization=jonanderjimenez
+projectKey=jonanderjimenez_probaproiektua
+serverUrl=https://sonarcloud.io
+serverVersion=8.0.0.47021
+dashboardUrl=https://sonarcloud.io/dashboard?id=jonanderjimenez_probaproiektua
+ceTaskId=AYr7D-e3EVGMIKiwTIRX
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYr7D-e3EVGMIKiwTIRX

@@ -1,0 +1,16 @@
+dataAccess.DataAccess#ApustuaEgin(LRegistered;Ljava/util/Vector;Ljava/lang/Double;Ljava/lang/Integer;)Z
+null
+domain.ApustuAnitza#<init>(LRegistered;Ljava/lang/Double;)V
+domain.ApustuAnitza#instance-init#
+java.util.Date#<init>()V
+java.util.Date#instance-init#
+==
+getApustuKantitatea domain.Sport#getApustuKantitatea()Ljava/lang/Integer;
+getApustuKopia domain.ApustuAnitza#getApustuKopia()Ljava/lang/Integer;
+getApustuAnitzaNumber domain.ApustuAnitza#getApustuAnitzaNumber()Ljava/lang/Integer;
+setApustuKopia domain.ApustuAnitza#setApustuKopia(Ljava/lang/Integer;)V
+addApustua domain.ApustuAnitza#addApustua(LApustua;)V
+ApustuaEgin dataAccess.DataAccess#ApustuaEgin(LRegistered;Ljava/util/Vector;Ljava/lang/Double;Ljava/lang/Integer;)Z
+setApustuKantitatea domain.Sport#setApustuKantitatea(Ljava/lang/Integer;)V
+getNork domain.Jarraitzailea#getNork()LRegistered;
+getJarraitzaileaNumber domain.Jarraitzailea#getJarraitzaileaNumber()Ljava/lang/Integer;

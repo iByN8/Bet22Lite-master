@@ -1,0 +1,5 @@
+businessLogic.BLFacadeImplementation#EmaitzakIpini(LQuote;)V
+==
+close dataAccess.DataAccess#close()V
+open dataAccess.DataAccess#open(Z)V
+EmaitzakIpini dataAccess.DataAccess#EmaitzakIpini(LQuote;)V

@@ -1,0 +1,118 @@
+
+xtest.dataAccess.TestDataAccess#addEventWithQuestion(Ljava/lang/String;Ljava/util/Date;Ljava/lang/String;F)Ldomain/Event;m
+c/C:/Users/jonan/Documents/GitHub/Bet22Lite-master/src/test/java/test/dataAccess/TestDataAccess.javaE E(#"10*á
+6J J(@X
+V
+J J(@
+evdomain.Event"__id*0
+
+__unknown_file (
+
+%6domain.Eventòï
+K K(%
+%8domain.Question">domain.Event#addQuestion(Ljava/lang/String;D)Ldomain/Question;*0
+
+__unknown_file (
+
+evdomain.Event*:
+
+__unknown_file (
+
+questionjava.lang.String*"
+
+__unknown_file (
+""2 addQuestion(Ljava/lang/String;D)*
+1*´
+7J J(@.,
+J J(
+%6domain.Event"domain.EventÊ
+„
+J J(@
+%7"Rdomain.Event#<init>(Ljava/lang/String;Ljava/util/Date;Ldomain/Team;Ldomain/Team;)V*0
+
+__unknown_file (
+
+%6domain.Event*6
+
+__unknown_file (
+
+descjava.lang.String*1
+
+__unknown_file (
+
+djava.util.Date*/
+
+__unknown_file (
+
+%2domain.Team*/
+
+__unknown_file (
+
+%4domain.Team*
+6*÷
+8J8 J(>,*
+J3 J(7
+%4domain.Team"domain.Teamì
+ê
+J/ J(?
+%5"'domain.Team#<init>(Ljava/lang/String;)V*/
+
+__unknown_file (
+
+%4domain.Team*$
+
+__unknown_file (
+Mugu*
+7*÷
+9J J(,*
+J! J(%
+%2domain.Team"domain.Teamì
+ê
+J J(-
+%3"'domain.Team#<init>(Ljava/lang/String;)V*/
+
+__unknown_file (
+
+%2domain.Team*$
+
+__unknown_file (
+Ibai*
+8*ì
+10F F(	Q
+O
+F F(
+%0java.io.PrintStream"__id*"
+
+__unknown_file (
+""ﬁ€
+F F(4
+
+%1void"0java.io.PrintStream#println(Ljava/lang/String;)V*7
+
+__unknown_file (
+
+%0java.io.PrintStream*;
+
+__unknown_file (
+>> DataAccessTest: addEvent2println(Ljava/lang/String;)J
+H
+G G(
+evdomain.Event"__id*"
+
+__unknown_file (
+""*
+9*/
+1R R(" 
+R R(
+
+evdomain.Event:$
+E$ E(0
+descjava.lang.String:
+E1 E(8
+djava.util.Date:(
+E9 E(I
+questionjava.lang.String: 
+
+__unknown_file (
+""B" 
+test.dataAccess.TestDataAccessH

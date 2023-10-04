@@ -1,0 +1,20 @@
+dataAccess.DataAccess#gertaeraEzabatu(Ldomain/Event;)Z
+java.util.Date#<init>()V
+java.lang.String#equals(Ljava/lang/Object;)Z
+java.util.Date#instance-init#
+==
+getUser domain.ApustuAnitza#getUser()LRegistered;
+getApustuKantitatea domain.Sport#getApustuKantitatea()Ljava/lang/Integer;
+getApustuAnitzaNumber domain.ApustuAnitza#getApustuAnitzaNumber()Ljava/lang/Integer;
+getEventDate domain.Event#getEventDate()Ljava/util/Date;
+getEgoera domain.ApustuAnitza#getEgoera()Ljava/lang/String;
+ApustuaIrabazi dataAccess.DataAccess#ApustuaIrabazi(Ldomain/ApustuAnitza;)V
+getEventNumber domain.Event#getEventNumber()Ljava/lang/Integer;
+apustuaEzabatu dataAccess.DataAccess#apustuaEzabatu(LRegistered;Ldomain/ApustuAnitza;)V
+getApustuak domain.ApustuAnitza#getApustuak()Ljava/util/Vector;
+irabazitaMarkatu domain.ApustuAnitza#irabazitaMarkatu()Z
+setApustuKantitatea domain.Sport#setApustuKantitatea(Ljava/lang/Integer;)V
+getQuestions domain.Event#getQuestions()Ljava/util/Vector;
+getResult domain.Question#getResult()Ljava/lang/String;
+compareTo java.util.Date#compareTo(Ljava/util/Date;)I
+removeApustua domain.ApustuAnitza#removeApustua(LApustua;)V

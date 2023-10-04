@@ -1,0 +1,5 @@
+businessLogic.BLFacadeImplementation#ezJarraituTaldea(LRegistered;)V
+==
+ezJarraituTaldea dataAccess.DataAccess#ezJarraituTaldea(LRegistered;)V
+close dataAccess.DataAccess#close()V
+open dataAccess.DataAccess#open(Z)V

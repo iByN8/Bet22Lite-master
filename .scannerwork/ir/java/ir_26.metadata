@@ -1,0 +1,10 @@
+dataAccess.DataAccess#apustuaEzabatu(LRegistered;Ldomain/ApustuAnitza;)V
+null
+java.util.Date#<init>()V
+java.util.Date#instance-init#
+==
+getApustuKantitatea domain.Sport#getApustuKantitatea()Ljava/lang/Integer;
+getApustuAnitzaNumber domain.ApustuAnitza#getApustuAnitzaNumber()Ljava/lang/Integer;
+getApustuak domain.ApustuAnitza#getApustuak()Ljava/util/Vector;
+setApustuKantitatea domain.Sport#setApustuKantitatea(Ljava/lang/Integer;)V
+getBalioa domain.ApustuAnitza#getBalioa()Ljava/lang/Double;

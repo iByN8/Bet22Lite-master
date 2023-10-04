@@ -1,0 +1,5 @@
+businessLogic.BLFacadeImplementation#jarraituTaldea(LRegistered;Ldomain/Team;)V
+==
+close dataAccess.DataAccess#close()V
+jarraituTaldea dataAccess.DataAccess#jarraituTaldea(LRegistered;Ldomain/Team;)V
+open dataAccess.DataAccess#open(Z)V

@@ -1,0 +1,9 @@
+dataAccess.DataAccess#createQuestion(Ldomain/Event;Ljava/lang/String;F)Ldomain/Question;
+null
+java.util.ResourceBundle#getString(Ljava/lang/String;)Ljava/lang/String;
+java.util.ResourceBundle#getBundle(Ljava/lang/String;)Ljava/util/ResourceBundle;
+==
+println java.io.PrintStream#println(Ljava/lang/String;)V
+DoesQuestionExists domain.Event#DoesQuestionExists(Ljava/lang/String;)Z
+getEventNumber domain.Event#getEventNumber()Ljava/lang/Integer;
+addQuestion domain.Event#addQuestion(Ljava/lang/String;D)Ldomain/Question;
