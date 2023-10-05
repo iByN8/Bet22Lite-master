@@ -978,7 +978,7 @@ public void open(boolean initializeMode){
 		Event event  = db.find(Event.class, ev); 
 		boolean resultB = true; 
 		List<Question> listQ = event.getQuestions(); 
-		
+	
 		for(Question q : listQ) {
 			if(q.getResult() == null) {
 				resultB = false; 
