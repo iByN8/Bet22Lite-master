@@ -1,7 +1,7 @@
 test\java\CreateQuestionBLBMTest.class
 test\java\CreateQuestionDAB.class
 test\dataAccess\TestDataAccess.class
-test\java\gertaeraEzabatuDAW.class
+test\java\GertaeraEzabatuDAW.class
 test\java\CreateQuestionInt.class
 test\java\CreateQuestionDAW.class
 test\businessLogic\TestFacadeImplementation.class
