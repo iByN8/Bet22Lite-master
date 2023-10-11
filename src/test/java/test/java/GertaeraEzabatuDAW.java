@@ -8,7 +8,7 @@ import dataAccess.DataAccess;
 import domain.Event;
 import test.dataAccess.TestDataAccess;
 
-public class gertaeraEzabatuDAW {
+public class GertaeraEzabatuDAW {
 	
 	 static DataAccess sut=new DataAccess();
 	 static TestDataAccess testDA=new TestDataAccess();
