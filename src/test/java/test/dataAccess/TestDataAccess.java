@@ -90,5 +90,14 @@ public class TestDataAccess {
 			return false;
 			
 		}
+			
+		public Event setQuestionResult(Event ev) {
+			db.getTransaction().begin();
+			Event a=db.find(Event.class, ev.getEventNumber());
+			a.getQuestions().get(0).setResult("galduta");
+			db.getTransaction().commit();
+			return a;
+			
+		}
 }
 
