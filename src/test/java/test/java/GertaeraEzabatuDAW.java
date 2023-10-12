@@ -9,6 +9,7 @@ import java.util.Date;
 import org.junit.Test;
 
 import dataAccess.DataAccess;
+import domain.ApustuAnitza;
 import domain.Event;
 import domain.Team;
 import exceptions.QuestionAlreadyExist;
@@ -25,7 +26,7 @@ public class GertaeraEzabatuDAW {
 		try {
 
 			// define paramaters
-			
+
 			String eventText = "test";
 			String queryText = "query1";
 			Float betMinimum = new Float(2);
@@ -48,27 +49,28 @@ public class GertaeraEzabatuDAW {
 			// if the program goes to this point OK
 			// fail();
 			fail();
-		}finally {
-			  //Remove the created objects in the database (cascade removing)   
+		} finally {
+			// Remove the created objects in the database (cascade removing)
 			testDA.open();
-	          boolean b=testDA.removeEvent(ev);
-	          testDA.close();
-	      //     System.out.println("Finally "+b);          
-	        }
+			boolean b = testDA.removeEvent(ev);
+			testDA.close();
+			// System.out.println("Finally "+b);
+		}
 	}
+
 	@Test
 	public void test2() {
 		try {
 
 			// define paramaters
-			
+
 			String eventText = "test";
 			String queryText = "query1";
 			Float betMinimum = new Float(2);
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date oneDate = null;
 			try {
-				oneDate = sdf.parse("05/10/2022");
+				oneDate = sdf.parse("05/10/202s");
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -76,60 +78,138 @@ public class GertaeraEzabatuDAW {
 			// configure the state of the system (create object in the dabatase)
 			testDA.open();
 			Event ev1 = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
-			ev=testDA.setQuestionResult(ev1);
+			ev = testDA.setQuestionResult(ev1);
 			testDA.close();
 			// invoke System Under Test (sut)
-			assertTrue(sut.gertaeraEzabatu(ev));			
+			assertTrue(sut.gertaeraEzabatu(ev));
 			// if the program continues fail
 		} catch (Exception e) {
 			// if the program goes to this point OK
 			// fail();
 			fail();
-		}finally {
-			  //Remove the created objects in the database (cascade removing)   
+		} finally {
+			// Remove the created objects in the database (cascade removing)
 			testDA.open();
-	          boolean b=testDA.removeEvent(ev);
-	          assertFalse(b);
-	          testDA.close();
-	      //     System.out.println("Finally "+b);          
-	        }
-		@Test
-		public void test3() {
-			try {
+			boolean b = testDA.removeEvent(ev);
+			assertFalse(b);
+			testDA.close();
+			// System.out.println("Finally "+b);
+		}
+	}
 
-				// define paramaters
-				
-				String eventText = "test";
-				String queryText = "query1";
-				Float betMinimum = new Float(2);
-				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-				Date oneDate = null;
-				try {
-					oneDate = sdf.parse("05/10/2022");
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				// configure the state of the system (create object in the dabatase)
-				testDA.open();
-				Event ev1 = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
-				ev=testDA.setQuestionResult(ev1);
-				testDA.close();
-				// invoke System Under Test (sut)
-				assertTrue(sut.gertaeraEzabatu(ev));			
-				// if the program continues fail
-			} catch (Exception e) {
-				// if the program goes to this point OK
-				// fail();
-				fail();
-			}finally {
-				  //Remove the created objects in the database (cascade removing)   
-				testDA.open();
-		          boolean b=testDA.removeEvent(ev);
-		          assertFalse(b);
-		          testDA.close();
-		      //     System.out.println("Finally "+b);          
-		        }
+	@Test
+	public void test3() {
+		try {
+
+			// define paramaters
+			String eventText = "test";
+			String queryText = "query1";
+			Float betMinimum = new Float(2);
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate = null;
+			try {
+				oneDate = sdf.parse("05/11/2023");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// configure the state of the system (create object in the dabatase)
+			testDA.open();
+			Event ev1 = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
+			ev = testDA.setQuestionResult(ev1);
+			testDA.close();
+			// invoke System Under Test (sut)
+			assertTrue(sut.gertaeraEzabatu(ev));
+			// if the program continues fail
+		} catch (Exception e) {
+			// if the program goes to this point OK
+			// fail();
+			fail();
+		} finally {
+			// Remove the created objects in the database (cascade removing)
+			testDA.open();
+			boolean b = testDA.removeEvent(ev);
+			assertFalse(b);
+			testDA.close();
+			// System.out.println("Finally "+b);
+		}
+	}
+
+	@Test
+	public void test4() {
+		try {
+			// define paramaters
+			String eventText = "test";
+			String queryText = "query1";
+			Float betMinimum = new Float(2);
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate = null;
+			try {
+				oneDate = sdf.parse("05/11/2023");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// configure the state of the system (create object in the dabatase)
+			testDA.open();
+			Event ev1 = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
+			Event ev2 = testDA.setQuestionResult(ev1);
+			ev = testDA.setQuoteQuestions(ev2);
+			testDA.close();
+			// invoke System Under Test (sut)
+			assertTrue(sut.gertaeraEzabatu(ev));
+			// if the program continues fail
+		} catch (Exception e) {
+			// if the program goes to this point OK
+			// fail();
+			fail();
+		} finally {
+			// Remove the created objects in the database (cascade removing)
+			testDA.open();
+			boolean b = testDA.removeEvent(ev);
+			assertFalse(b);
+			testDA.close();
+			// System.out.println("Finally "+b);
+		}
+	}
+
+	@Test
+	public void test5() {
+		try {
+			// define paramaters
+			String eventText = "test";
+			String queryText = "query1";
+			Float betMinimum = new Float(2);
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate = null;
+			try {
+				oneDate = sdf.parse("05/11/2023");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			// configure the state of the system (create object in the dabatase)
+			testDA.open();
+			Event ev1 = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
+			Event ev2 = testDA.setQuestionResult(ev1);
+			ev = testDA.setQuoteQuestions(ev2);
+			ApustuAnitza aa= testDA.setApustuaTest(ev);
+			testDA.close();
+			// invoke System Under Test (sut)
+			assertTrue(!aa.getEgoera().equals("galduta"));
+			// if the program continues fail
+		} catch (Exception e) {
+			// if the program goes to this point OK
+			// fail();
+			fail();
+		} finally {
+			// Remove the created objects in the database (cascade removing)
+			testDA.open();
+			boolean b = testDA.removeEvent(ev);
+			assertFalse(b);
+			testDA.close();
+			// System.out.println("Finally "+b);
+		}
 	}
 
 }

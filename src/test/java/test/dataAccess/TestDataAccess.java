@@ -9,8 +9,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import configuration.ConfigXML;
+import domain.ApustuAnitza;
+import domain.Apustua;
 import domain.Event;
 import domain.Question;
+import domain.Quote;
+import domain.Registered;
 import domain.Team;
 
 public class TestDataAccess {
@@ -99,5 +103,24 @@ public class TestDataAccess {
 			return a;
 			
 		}
+		public Event setQuoteQuestions(Event ev) {
+			db.getTransaction().begin();
+			Event a=db.find(Event.class, ev.getEventNumber());
+			a.getQuestions().get(0).addQuote(1.8, "3-0", a.getQuestions().get(0));
+			db.getTransaction().commit();
+			return a;
+			
+		}
+		public ApustuAnitza setApustuaTest(Event ev) {
+			db.getTransaction().begin();
+			Event a=db.find(Event.class, ev.getEventNumber());
+			Quote q=a.getQuestions().get(0).getQuotes().get(0);
+			ApustuAnitza aa=new ApustuAnitza(new Registered("user","a",10),3.0);
+			q.addApustua(new Apustua(aa,q));
+			db.getTransaction().commit();
+			return aa;
+			
+		}
+		
 }
 
