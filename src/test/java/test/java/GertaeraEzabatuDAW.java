@@ -11,6 +11,7 @@ import org.junit.Test;
 import dataAccess.DataAccess;
 import domain.ApustuAnitza;
 import domain.Event;
+import domain.Quote;
 import domain.Team;
 import exceptions.QuestionAlreadyExist;
 import test.dataAccess.TestDataAccess;
@@ -153,8 +154,8 @@ public class GertaeraEzabatuDAW {
 			// configure the state of the system (create object in the dabatase)
 			testDA.open();
 			Event ev1 = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
-			Event ev2 = testDA.setQuestionResult(ev1);
-			ev = testDA.setQuoteQuestions(ev2);
+			ev = testDA.setQuestionResult(ev1);
+			testDA.setQuoteQuestions(ev);
 			testDA.close();
 			// invoke System Under Test (sut)
 			assertTrue(sut.gertaeraEzabatu(ev));
@@ -191,12 +192,12 @@ public class GertaeraEzabatuDAW {
 			// configure the state of the system (create object in the dabatase)
 			testDA.open();
 			Event ev1 = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
-			Event ev2 = testDA.setQuestionResult(ev1);
-			ev = testDA.setQuoteQuestions(ev2);
-			ApustuAnitza aa= testDA.setApustuaTest(ev);
+			ev = testDA.setQuestionResult(ev1);
+			Quote qu = testDA.setQuoteQuestions(ev);
+			ApustuAnitza aa = testDA.setApustuaTest(ev);
 			testDA.close();
-			// invoke System Under Test (sut)
 			assertTrue(!aa.getEgoera().equals("galduta"));
+			assertTrue(sut.gertaeraEzabatu(ev));
 			// if the program continues fail
 		} catch (Exception e) {
 			// if the program goes to this point OK
