@@ -116,28 +116,22 @@ public class TestDataAccess {
 		public ApustuAnitza setApustuaTest(Event ev) {
 		    db.getTransaction().begin();
 
-		    // Busca la Quote
 		    Quote q = db.find(Quote.class, ev.getQuestions().get(0).getQuotes().get(0).getQuoteNumber());
-
-		    // Busca el Registered (cambia "user" por el nombre de usuario real)
+  
 		    Registered r = db.find(Registered.class, "user");
 
-		    // Crea un nuevo objeto ApustuAnitza
 		    ApustuAnitza aa = new ApustuAnitza(r, 3.0);
-
-		    // Crea un nuevo objeto Apustua y configura la relación con Quote
+		
 		    Apustua apustua = new Apustua(aa, q);
-
-		    // Configura la relación entre ApustuAnitza y Apustua
+		    
 		    aa.addApustua(apustua);
 		    q.addApustua(apustua);
-		    // Configura la relación entre Event y Sport
-		    Sport s = db.find(Sport.class, "Futbol"); // Reemplaza "Furbo" con el nombre de deporte real
+	
+		    Sport s = db.find(Sport.class, "Futbol"); 
 		    s.eguneratuApustuKantitatea();
 		    s.addEvent(ev);
 		    ev.setSport(s);
 
-		    // Persiste los objetos en la base de datos
 		    db.persist(q);
 		    db.persist(aa);
 		    db.persist(apustua);
@@ -146,6 +140,17 @@ public class TestDataAccess {
 
 		    return aa;
 		}
-		
+		public void gehituApustua(Quote q) {
+			db.getTransaction().begin();
+			Quote qu=db.find(Quote.class, q.getQuoteNumber());
+			
+			ApustuAnitza aa=db.find(ApustuAnitza.class, qu.getApustuak().get(0).getApustuAnitza());
+			
+			Apustua apustua = new Apustua(aa,qu);
+			aa.addApustua(apustua);
+			
+			db.persist(apustua);
+			db.getTransaction().commit();
+		}
 }
 
