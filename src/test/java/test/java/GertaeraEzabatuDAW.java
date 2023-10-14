@@ -262,7 +262,7 @@ public class GertaeraEzabatuDAW {
 	        Quote qu = testDA.setQuoteQuestions(ev);
 	        ApustuAnitza aa = testDA.setApustuaTest(ev);
 	        testDA.gehituApustua(qu);
-	        testDA.setEgoera(aa);
+	        testDA.setEgoera(aa,"irabazita");
 	        testDA.close();
 
 	        // Remove the created objects in the database (cascade removing)
@@ -277,4 +277,5 @@ public class GertaeraEzabatuDAW {
 	        fail();
 	    }
 	}
+
 }

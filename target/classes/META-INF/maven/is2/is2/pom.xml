@@ -145,6 +145,11 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>change your data</groupId>
+			<artifactId>change your data</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 </project>
