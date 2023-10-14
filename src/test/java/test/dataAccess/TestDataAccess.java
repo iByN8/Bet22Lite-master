@@ -123,6 +123,7 @@ public class TestDataAccess {
 		    ApustuAnitza aa = new ApustuAnitza(r, 3.0);
 		
 		    Apustua apustua = new Apustua(aa, q);
+		   
 		    
 		    aa.addApustua(apustua);
 		    q.addApustua(apustua);
@@ -145,9 +146,25 @@ public class TestDataAccess {
 			Quote qu=db.find(Quote.class, q.getQuoteNumber());
 			
 			ApustuAnitza aa=db.find(ApustuAnitza.class, qu.getApustuak().get(0).getApustuAnitza());
+			Sport s=db.find(Sport.class, qu.getQuestion().getEvent().getSport());
 			
 			Apustua apustua = new Apustua(aa,qu);
+			apustua.setEgoera("irabazita");
 			aa.addApustua(apustua);
+			
+			s.eguneratuApustuKantitatea();
+			
+			db.persist(apustua);
+			db.getTransaction().commit();
+		}
+
+
+		public void setEgoera(ApustuAnitza aa) {
+			// TODO Auto-generated method stub
+			db.getTransaction().begin();
+			ApustuAnitza a=db.find(ApustuAnitza.class, aa.getApustuAnitzaNumber());
+			Apustua apustua=db.find(Apustua.class, a.getApustuak().get(0).getApostuaNumber());
+			apustua.setEgoera("irabazita");
 			
 			db.persist(apustua);
 			db.getTransaction().commit();
