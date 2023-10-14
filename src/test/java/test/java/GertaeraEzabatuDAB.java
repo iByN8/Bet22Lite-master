@@ -172,7 +172,7 @@ public class GertaeraEzabatuDAB {
 			fail();
 		} 
 	}
-	public void test4() {
+	public void test5() {
 		try {
 			// define paramaters
 			String eventText = "event1";
