@@ -39,9 +39,8 @@ public class GertaerakSortuDAW {
 		   int year=today.get(Calendar.YEAR);
 		   if (month==12) { month=0; year+=1;}
         // ...
-
         // Assert
-        assertTrue(sut.gertaerakSortu("Athletic-Eibar", UtilDate.newDate(year,month,17), "Futbol"));
+        assertTrue(sut.gertaerakSortu("ramos-sergio", UtilDate.newDate(year,month,17), "Futbol"));
     }
 
     @Test
