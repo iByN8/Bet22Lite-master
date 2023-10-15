@@ -35,7 +35,8 @@ public class EmaitzakIpiniDABTest {
 	public void test1() {
 		try {
 			//invoke System Under Test (sut)
-			sut.EmaitzakIpini(null);
+			Quote qu = null;
+			sut.EmaitzakIpini(qu);
 			
 		   } catch (Exception e) {
 			   assertTrue(true);
@@ -83,6 +84,7 @@ public class EmaitzakIpiniDABTest {
 			q = testDA.setQuoteQuestions(ev);
 			Apustua a = new Apustua();
 			q.addApustua(a);
+			a.setKuota(q);
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
@@ -119,6 +121,7 @@ public class EmaitzakIpiniDABTest {
 			Event ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
 			q = testDA.setQuoteQuestions(ev);
 			Apustua a = new Apustua();
+			a.setKuota(q);
 			q.addApustua(a);
 			testDA.close();			
 			
