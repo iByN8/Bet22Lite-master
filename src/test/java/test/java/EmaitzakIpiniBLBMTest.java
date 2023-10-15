@@ -5,11 +5,13 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
+
+import dataAccess.DataAccess;
 
 public class EmaitzakIpiniBLBMTest {
 	
-	ForumDAOInterface forumDAO = new ForumInMemoryDAO();
-	ForumBL sut = new ForumBL(forumDAO); 
+	DataAccess MockDB = Mockito.mock(DataAccess.class);
 
 
 	@Before
