@@ -18,7 +18,7 @@ import exceptions.EventNotFinished;
 import exceptions.QuestionAlreadyExist;
 import test.dataAccess.TestDataAccess;
 
-public class EmaitzakIpiniBLBTest {
+public class EmaitzakIpiniDABTest {
 
 	 //sut:system under test
 	 static DataAccess sut=new DataAccess();
