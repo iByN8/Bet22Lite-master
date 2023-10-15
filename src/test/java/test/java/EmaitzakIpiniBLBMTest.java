@@ -9,34 +9,29 @@ import java.util.Date;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import dataAccess.DataAccess;
 import domain.Apustua;
 import domain.Event;
 import domain.Question;
 import domain.Quote;
+import domain.Team;
 import exceptions.EventNotFinished;
-import exceptions.QuestionAlreadyExist;
-import test.dataAccess.TestDataAccess;
 
-public class EmaitzakIpiniDABTest {
-
-	 //sut:system under test
-	 static DataAccess sut=new DataAccess();
-	 
-	 //additional operations needed to execute the test 
-	 static TestDataAccess testDA=new TestDataAccess();
-
-	private Quote q;
+public class EmaitzakIpiniBLBMTest {
 	
-	
+	DataAccess MockDB = Mockito.mock(DataAccess.class);
+	Quote q = Mockito.mock(Quote.class);
+
+
 	@Test
 	//sut.createQuestion:  The event has NOT one question with a queryText. 
 	public void test1() {
 		try {
 			//invoke System Under Test (sut)
 			Quote qu = null;
-			sut.EmaitzakIpini(qu);
+			MockDB.EmaitzakIpini(qu);
 			
 		   } catch (Exception e) {
 			   assertTrue(true);
@@ -51,7 +46,7 @@ public class EmaitzakIpiniDABTest {
 					
 				Quote qu = new Quote();
 				//invoke System Under Test (sut)  
-				sut.EmaitzakIpini(qu);
+				MockDB.EmaitzakIpini(qu);
 				
 			   } catch (Exception e) {
 				   assertTrue(true);	
@@ -79,16 +74,11 @@ public class EmaitzakIpiniDABTest {
 			}	
 			
 			//configure the state of the system (create object in the dabatase)
-			testDA.open();
-			Event ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
-			q = testDA.setQuoteQuestions(ev);
-			Apustua a = new Apustua();
-			q.addApustua(a);
-			a.setKuota(q);
-			testDA.close();			
+			Mockito.doReturn(oneDate).when(q.getQuestion().getEvent().getEventDate());
 			
 			//invoke System Under Test (sut)  
-			sut.EmaitzakIpini(q);
+			MockDB.EmaitzakIpini(q);
+			fail();
 			
 		   } catch (EventNotFinished e) {
 			   assertTrue(true);
@@ -112,21 +102,28 @@ public class EmaitzakIpiniDABTest {
 			try {
 				oneDate = sdf.parse("05/10/2022");
 			} catch (ParseException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}	
+			}
+			SimpleDateFormat sd = new SimpleDateFormat("dd/MM/yyyy");
+			Date d=null;;
+			try {
+				d = sdf.parse("04/10/2022");
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}
+			Question qu = new Question(queryText, betMinimum, new Event(eventText, d, new Team(), new Team()));
+			Apustua a = new Apustua();
+			q.addApustua(a);
+			a.setKuota(q);
+			qu.setQuestion(queryText);
 			
 			//configure the state of the system (create object in the dabatase)
-			testDA.open();
-			Event ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
-			q = testDA.setQuoteQuestions(ev);
-			Apustua a = new Apustua();
-			a.setKuota(q);
-			q.addApustua(a);
-			testDA.close();			
+			Mockito.doReturn("irabazita").when(q.getForecast());
+			Mockito.doReturn(oneDate).when(q.getQuestion().getEvent().getEventDate());
+			Mockito.doReturn(qu).when(q.getQuestion());
 			
 			//invoke System Under Test (sut)  
-			sut.EmaitzakIpini(q);
+			MockDB.EmaitzakIpini(q);
 			assertTrue(true);
 			
 		   } catch (EventNotFinished e) {

@@ -51,6 +51,7 @@ public class CreateQuestionBLBMTest {
 					e.printStackTrace();
 				}	
 				
+				
 				//configure Mock
 				Mockito.doReturn(oneDate).when(mockedEvent).getEventDate();
 				Mockito.doReturn(new Question(queryText, betMinimum,mockedEvent)).when(dataAccess).createQuestion(Mockito.any(Event.class),Mockito.any(String.class), Mockito.any(Integer.class));
