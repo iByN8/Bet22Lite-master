@@ -246,7 +246,7 @@ public class DataAccess  {
 				q4=ev11.addQuestion("Zenbat gol sartuko dira?",2);
 				q5=ev17.addQuestion("Zeinek irabaziko du partidua?",1);
 				q6=ev17.addQuestion("Golak sartuko dira lehenengo zatian?",2);
-				
+				 
 				
 			}
 			q7 = ev21.addQuestion("Emaitza?", 1);
