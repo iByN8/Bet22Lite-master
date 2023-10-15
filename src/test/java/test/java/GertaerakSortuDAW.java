@@ -45,7 +45,7 @@ public class GertaerakSortuDAW {
     }
 
     @Test
-    public void testGertaerakSortu_DescriptionExists() {
+    public void test3() {
         // Lógica para crear un evento con una descripción existente y verificar el retorno de false
     	Calendar today = Calendar.getInstance();
 		   
