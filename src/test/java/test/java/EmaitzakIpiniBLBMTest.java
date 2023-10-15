@@ -7,6 +7,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class EmaitzakIpiniBLBMTest {
+	
+	ForumDAOInterface forumDAO = new ForumInMemoryDAO();
+	ForumBL sut = new ForumBL(forumDAO); 
+
 
 	@Before
 	public void setUp() throws Exception {
