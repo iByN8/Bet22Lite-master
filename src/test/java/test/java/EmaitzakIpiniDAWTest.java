@@ -11,9 +11,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dataAccess.DataAccess;
+import domain.Apustua;
 import domain.Event;
 import domain.Question;
 import domain.Quote;
+import exceptions.EventNotFinished;
 import exceptions.QuestionAlreadyExist;
 import test.dataAccess.TestDataAccess;
 
@@ -28,64 +30,91 @@ public class EmaitzakIpiniDAWTest {
 
 	private Event ev;
 	private Quote q;
+		
+	@Test
+	//sut.createQuestion:  The event is null. The test fail
+		public void test3() {
+			try {
+				//define paramaters
+				String eventText="event1";
+				String queryText=null;
+				Float betMinimum=new Float(2);
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				Date oneDate=null;;
+				try {
+					oneDate = sdf.parse("05/10/2022");
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
+				
+				//configure the state of the system (create object in the dabatase)
+				testDA.open();
+				Event ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
+				q = testDA.setQuoteQuestions(ev);
+				q.setQuestion(null);
+				testDA.close();	
+				
+				//invoke System Under Test (sut)  
+				sut.EmaitzakIpini(q);
+				
+			   } catch (Exception e) {
+				   assertTrue(true);	
+				// TODO Auto-generated catch block
+				// if the program goes to this point fail  
+				} 
+			}
 	
 	@Test
-	//sut.createQuestion:  The event has one question with a queryText. 
-	public void test1() {
-		try {
-			
-			//define paramaters
-			String eventText="event1";
-			String queryText="query1";
-			Float betMinimum=new Float(2);
-			
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate=null;;
+	//sut.createQuestion:  The event is null. The test fail
+		public void test4() {
 			try {
-				oneDate = sdf.parse("05/10/2022");
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}	
-			
-			//configure the state of the system (create object in the dabatase)
-			testDA.open();
-			ev = testDA.addEventWithQuestion(eventText,oneDate,queryText, betMinimum);
-			testDA.close();
-			
-			
-			//invoke System Under Test (sut)  
-			sut.createQuestion(ev, queryText, betMinimum);
-			
-			
-			//if the program continues fail
-		    fail();
-		   } catch (QuestionAlreadyExist e) {
-			// if the program goes to this point OK  
-			//fail();
-			   assertTrue(true);
-			} finally {
-				  //Remove the created objects in the database (cascade removing)   
+				//define paramaters
+				String eventText="event1";
+				String queryText=null;
+				Float betMinimum=new Float(2);
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				Date oneDate=null;;
+				try {
+					oneDate = sdf.parse("05/10/2022");
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
+				
+				//configure the state of the system (create object in the dabatase)
 				testDA.open();
-		         boolean b=testDA.removeEvent(ev);
-		          testDA.close();
-		         System.out.println("Finally "+b);          
-		        }
-		   }
+				Event ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
+				q = testDA.setQuoteQuestions(ev);
+				q.setApustuak(null);
+				testDA.close();	
+				
+				//invoke System Under Test (sut)  
+				sut.EmaitzakIpini(q);
+				
+			   } catch (Exception e) {
+				   assertTrue(true);	
+				// TODO Auto-generated catch block
+				// if the program goes to this point fail  
+				} 
+			}
+	
 	@Test
-	//sut.createQuestion:  The event has NOT one question with a queryText. 
-	public void test2() {
+	//sut.createQuestion:  The question is null. The test fail
+	public void test5() {
 		try {
 			
 			//define paramaters
 			String eventText="event1";
-			String queryText="query1";
+			String queryText=null;
 			Float betMinimum=new Float(2);
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date oneDate=null;;
 			try {
-				oneDate = sdf.parse("05/10/2022");
+				oneDate = sdf.parse("05/10/2024");
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -93,35 +122,100 @@ public class EmaitzakIpiniDAWTest {
 			
 			//configure the state of the system (create object in the dabatase)
 			testDA.open();
-			ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
+			Event ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
+			q = testDA.setQuoteQuestions(ev);
+			Apustua a = new Apustua();
+			q.addApustua(a);
+			a.setKuota(q);
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
-			Question q=sut.createQuestion(ev, queryText, betMinimum);
+			sut.EmaitzakIpini(q);
 			
-			
-			//verify the results
-			assertTrue(q!=null);
-			assertEquals(q.getQuestion(),queryText);
-			assertEquals(q.getBetMinimum(),betMinimum,0);
-			
-			//q is DB
-			testDA.open();
-			boolean exist = testDA.existQuestion(ev,q);
-				
-			assertTrue(exist);
-			testDA.close();
-			
-		   } catch (QuestionAlreadyExist e) {
+		   } catch (EventNotFinished e) {
+			   assertTrue(true);
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail  
-			fail();
-			} finally {
-				  //Remove the created objects in the database (cascade removing)   
-				testDA.open();
-		          boolean b=testDA.removeEvent(ev);
-		          testDA.close();
-		      //     System.out.println("Finally "+b);          
-		        }
+			}
+		   }
+	
+	@Test
+	//sut.createQuestion:  The question is null. The test fail
+	public void test6() {
+		try {
+			
+			//define paramaters
+			String eventText="event1";
+			String queryText=null;
+			Float betMinimum=new Float(2);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;;
+			try {
+				oneDate = sdf.parse("05/10/2022");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			
+			//configure the state of the system (create object in the dabatase)
+			testDA.open();
+			Event ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
+			q = testDA.setQuoteQuestions(ev);
+			Apustua a = new Apustua();
+			a.setKuota(q);
+			a.setEgoera("galduta");
+			q.addApustua(a);
+			testDA.close();			
+			
+			//invoke System Under Test (sut)  
+			sut.EmaitzakIpini(q);
+			assertTrue(true);
+			
+		   } catch (Exception e) {
+			   fail();
+			// TODO Auto-generated catch block
+			// if the program goes to this point fail  
+			}
+		   }
+	
+	@Test
+	//sut.createQuestion:  The question is null. The test fail
+	public void test7() {
+		try {
+			
+			//define paramaters
+			String eventText="event1";
+			String queryText=null;
+			Float betMinimum=new Float(2);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;;
+			try {
+				oneDate = sdf.parse("05/10/2022");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			
+			//configure the state of the system (create object in the dabatase)
+			testDA.open();
+			Event ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
+			q = testDA.setQuoteQuestions(ev);
+			Apustua a = new Apustua();
+			a.setKuota(q);
+			a.setEgoera("irabazita");
+			q.addApustua(a);
+			testDA.close();			
+			
+			//invoke System Under Test (sut)  
+			sut.EmaitzakIpini(q);
+			assertTrue(true);
+			
+		   } catch (Exception e) {
+			   fail();
+			// TODO Auto-generated catch block
+			// if the program goes to this point fail  
+			}
 		   }
 }
