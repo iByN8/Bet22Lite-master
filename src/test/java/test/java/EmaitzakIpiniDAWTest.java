@@ -16,7 +16,7 @@ import domain.Question;
 import exceptions.QuestionAlreadyExist;
 import test.dataAccess.TestDataAccess;
 
-public class EmaitzakIpiniDABMTest {
+public class EmaitzakIpiniDAWTest {
 
 
 	 //sut:system under test
