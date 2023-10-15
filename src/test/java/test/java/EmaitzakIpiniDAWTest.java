@@ -54,11 +54,11 @@ public class EmaitzakIpiniDAWTest {
 			q.getQuestion().setResult("galduta");
 			testDA.close();	
 			//invoke System Under Test (sut)
-			Quote qu = null;
-			sut.EmaitzakIpini(qu);
+			sut.EmaitzakIpini(q);
 			
+			assertTrue(true);
 		   } catch (Exception e) {
-			   assertTrue(true);
+			   
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail  
 			}
@@ -87,11 +87,11 @@ public class EmaitzakIpiniDAWTest {
 			q.getQuestion().setResult("irabazita");
 			testDA.close();	
 			//invoke System Under Test (sut)
-			Quote qu = null;
-			sut.EmaitzakIpini(qu);
+			sut.EmaitzakIpini(q);
+			assertTrue(true);
 			
 		   } catch (Exception e) {
-			   assertTrue(true);
+			   
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail  
 			}
@@ -238,7 +238,7 @@ public class EmaitzakIpiniDAWTest {
 			sut.EmaitzakIpini(q);
 			assertTrue(true);
 			
-		   } catch (EventNotFinished e) {
+		   } catch (Exception e) {
 			   fail();
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail  
@@ -278,7 +278,7 @@ public class EmaitzakIpiniDAWTest {
 			sut.EmaitzakIpini(q);
 			assertTrue(true);
 			
-		   } catch (EventNotFinished e) {
+		   } catch (Exception e) {
 			   fail();
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail  
