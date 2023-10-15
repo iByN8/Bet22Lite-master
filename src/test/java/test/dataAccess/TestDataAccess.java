@@ -177,4 +177,12 @@ public class TestDataAccess {
 		}
 		db.getTransaction().commit();
 	}
+	public Event addEvent(String desc, Date data) {
+		db.getTransaction().begin();
+		Event ev=new Event(desc,data, new Team("Reala"), new Team("Eibar"));
+		
+		db.persist(ev);
+		db.getTransaction().commit();
+		return ev;
+	}
 }

@@ -13,8 +13,11 @@ import org.junit.Test;
 
 import configuration.ConfigXML;
 import dataAccess.DataAccess;
+import domain.ApustuAnitza;
 import domain.Event;
 import domain.Question;
+import domain.Quote;
+import domain.Team;
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
@@ -34,65 +37,33 @@ public class GertaeraEzabatuDAB {
 	// sut.createQuestion: The event has NOT one question with a queryText.
 	public void test1() {
 		try {
-			// define paramaters
-			String eventText = "event1";
-			String queryText = "query1";
-			Float betMinimum = new Float(2);
-
-			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-			Date oneDate = null;
-			;
-			try {
-				oneDate = sdf.parse("05/10/2022");
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-			// configure the state of the system (create object in the dabatase)
-			testDA.open();
-			ev = testDA.addEventWithQuestion(eventText, oneDate, "query2", betMinimum);
-			testDA.close();
-
-			// invoke System Under Test (sut)
+		
 			sut.gertaeraEzabatu(null);
 			fail();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail
 			assertTrue(true);
-		} finally {
-			// Remove the created objects in the database (cascade removing)
-			testDA.open();
-			boolean b = testDA.removeEvent(ev);
-			testDA.close();
-			// System.out.println("Finally "+b);
 		}
 	}
+
 	@Test
 	// sut.createQuestion: The event has NOT one question with a queryText.
 	public void test2() {
 		try {
-			// define paramaters
-			String eventText = "event1";
-			String queryText = "query1";
-			Float betMinimum = new Float(2);
-
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date oneDate = null;
 			;
 			try {
-				oneDate = sdf.parse("05/10/2022");
+				oneDate = sdf.parse("05/12/2021");
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
 			// configure the state of the system (create object in the dabatase)
-			testDA.open();
-			ev = testDA.addEventWithQuestion(eventText, oneDate, "query2", betMinimum);
-			testDA.close();
-			Event ev1=new Event();
+
+			Event ev1 = new Event("a",oneDate,new Team("Barca"),new Team("Bai"));
 
 			// invoke System Under Test (sut)
 			sut.gertaeraEzabatu(ev1);
@@ -101,22 +72,16 @@ public class GertaeraEzabatuDAB {
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail
 			assertTrue(true);
-		} finally {
-			// Remove the created objects in the database (cascade removing)
-			testDA.open();
-			boolean b = testDA.removeEvent(ev);
-			testDA.close();
-			// System.out.println("Finally "+b);
 		}
 	}
+
 	@Test
 	// sut.createQuestion: The event has NOT one question with a queryText.
 	public void test3() {
 		try {
 			// define paramaters
 			String eventText = "event1";
-			String queryText = "query1";
-			Float betMinimum = new Float(2);
+			;
 
 			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			Date oneDate = null;
@@ -130,17 +95,20 @@ public class GertaeraEzabatuDAB {
 
 			// configure the state of the system (create object in the dabatase)
 			testDA.open();
-			ev = testDA.addEventWithQuestion(eventText, oneDate, "query2", betMinimum);
+			ev = testDA.addEvent(eventText, oneDate);
 			testDA.close();
 			// invoke System Under Test (sut)
-			boolean b=sut.gertaeraEzabatu(ev);
-			assertFalse(b);
+			boolean b = sut.gertaeraEzabatu(ev);
+			assertTrue(b);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail
 			fail();
-		} 
+		}
 	}
+
+	@Test
+	// sut.createQuestion: The event has NOT one question with a queryText.
 	public void test4() {
 		try {
 			// define paramaters
@@ -152,7 +120,7 @@ public class GertaeraEzabatuDAB {
 			Date oneDate = null;
 			;
 			try {
-				oneDate = sdf.parse("05/10/2022");
+				oneDate = sdf.parse("05/10/2024");
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -160,18 +128,22 @@ public class GertaeraEzabatuDAB {
 
 			// configure the state of the system (create object in the dabatase)
 			testDA.open();
-			Event ev1 = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
-			ev = testDA.setQuestionResult(ev1);
+			ev = testDA.addEventWithQuestion(eventText, oneDate, "query2", betMinimum);
 			testDA.close();
+
 			// invoke System Under Test (sut)
-			boolean b=sut.gertaeraEzabatu(ev);
-			assertTrue(b);
+			boolean b = sut.gertaeraEzabatu(ev);
+			assertFalse(b);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail
+
 			fail();
-		} 
+		}
 	}
+
+	@Test
+	// sut.createQuestion: The event has NOT one question with a queryText.
 	public void test5() {
 		try {
 			// define paramaters
@@ -183,7 +155,44 @@ public class GertaeraEzabatuDAB {
 			Date oneDate = null;
 			;
 			try {
-				oneDate = sdf.parse("05/10/2022");
+				oneDate = sdf.parse("05/10/2024");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			// configure the state of the system (create object in the dabatase)
+			testDA.open();
+			ev = testDA.addEventWithQuestion(eventText, oneDate, "query2", betMinimum);
+			ev = testDA.setQuestionResult(ev);
+			Quote qu = testDA.setQuoteQuestions(ev);
+			testDA.close();
+
+			// invoke System Under Test (sut)
+			boolean b = sut.gertaeraEzabatu(ev);
+			assertTrue(b);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			// if the program goes to this point fail
+
+			fail();
+		}
+	}
+
+	@Test
+	// sut.createQuestion: The event has NOT one question with a queryText.
+	public void test6() {
+		try {
+			// define paramaters
+			String eventText = "event1";
+			String queryText = "query1";
+			Float betMinimum = new Float(2);
+
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate = null;
+			;
+			try {
+				oneDate = sdf.parse("05/10/2024");
 			} catch (ParseException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -192,17 +201,23 @@ public class GertaeraEzabatuDAB {
 			// configure the state of the system (create object in the dabatase)
 			testDA.open();
 			Event ev1 = testDA.addEventWithQuestion(eventText, oneDate, queryText, betMinimum);
+			// Set the primary key (event number) to a unique value (e.g., a timestamp)
 			ev = testDA.setQuestionResult(ev1);
+			Quote qu = testDA.setQuoteQuestions(ev);
+			testDA.setApustuaTest(ev);
+			testDA.gehituApustua(qu);
+
 			testDA.close();
+
 			// invoke System Under Test (sut)
-			boolean b=sut.gertaeraEzabatu(ev);
+			boolean b = sut.gertaeraEzabatu(ev);
 			assertTrue(b);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail
+
 			fail();
-		} 
+		}
 	}
 
-	
 }
