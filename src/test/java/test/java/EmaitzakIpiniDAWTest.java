@@ -33,6 +33,26 @@ public class EmaitzakIpiniDAWTest {
 	
 	public void test1() {
 		try {
+			//define paramaters
+			String eventText="event1";
+			String queryText=null;
+			Float betMinimum=new Float(2);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;;
+			try {
+				oneDate = sdf.parse("05/10/2022");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			
+			//configure the state of the system (create object in the dabatase)
+			testDA.open();
+			Event ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
+			q = testDA.setQuoteQuestions(ev);
+			q.getQuestion().setResult("galduta");
+			testDA.close();	
 			//invoke System Under Test (sut)
 			Quote qu = null;
 			sut.EmaitzakIpini(qu);
@@ -43,14 +63,67 @@ public class EmaitzakIpiniDAWTest {
 			// if the program goes to this point fail  
 			}
 		   }
+	
+	public void test2() {
+		try {
+			//define paramaters
+			String eventText="event1";
+			String queryText=null;
+			Float betMinimum=new Float(2);
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			Date oneDate=null;;
+			try {
+				oneDate = sdf.parse("05/10/2022");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}	
+			
+			//configure the state of the system (create object in the dabatase)
+			testDA.open();
+			Event ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
+			q = testDA.setQuoteQuestions(ev);
+			q.getQuestion().setResult("irabazita");
+			testDA.close();	
+			//invoke System Under Test (sut)
+			Quote qu = null;
+			sut.EmaitzakIpini(qu);
+			
+		   } catch (Exception e) {
+			   assertTrue(true);
+			// TODO Auto-generated catch block
+			// if the program goes to this point fail  
+			}
+		   }
+	
 	@Test
 	//sut.createQuestion:  The event is null. The test fail
-		public void test2() {
+		public void test3() {
 			try {
-					
-				Quote qu = new Quote();
+				//define paramaters
+				String eventText="event1";
+				String queryText=null;
+				Float betMinimum=new Float(2);
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				Date oneDate=null;;
+				try {
+					oneDate = sdf.parse("05/10/2022");
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
+				
+				//configure the state of the system (create object in the dabatase)
+				testDA.open();
+				Event ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
+				q = testDA.setQuoteQuestions(ev);
+				q.setQuestion(null);
+				testDA.close();	
+				
 				//invoke System Under Test (sut)  
-				sut.EmaitzakIpini(qu);
+				sut.EmaitzakIpini(q);
 				
 			   } catch (Exception e) {
 				   assertTrue(true);	
@@ -58,9 +131,45 @@ public class EmaitzakIpiniDAWTest {
 				// if the program goes to this point fail  
 				} 
 			}
+	
+	@Test
+	//sut.createQuestion:  The event is null. The test fail
+		public void test4() {
+			try {
+				//define paramaters
+				String eventText="event1";
+				String queryText=null;
+				Float betMinimum=new Float(2);
+				
+				SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+				Date oneDate=null;;
+				try {
+					oneDate = sdf.parse("05/10/2022");
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}	
+				
+				//configure the state of the system (create object in the dabatase)
+				testDA.open();
+				Event ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
+				q = testDA.setQuoteQuestions(ev);
+				q.setApustuak(null);
+				testDA.close();	
+				
+				//invoke System Under Test (sut)  
+				sut.EmaitzakIpini(q);
+				
+			   } catch (Exception e) {
+				   assertTrue(true);	
+				// TODO Auto-generated catch block
+				// if the program goes to this point fail  
+				} 
+			}
+	
 	@Test
 	//sut.createQuestion:  The question is null. The test fail
-	public void test3() {
+	public void test5() {
 		try {
 			
 			//define paramaters
@@ -98,7 +207,7 @@ public class EmaitzakIpiniDAWTest {
 	
 	@Test
 	//sut.createQuestion:  The question is null. The test fail
-	public void test4() {
+	public void test6() {
 		try {
 			
 			//define paramaters
@@ -138,7 +247,7 @@ public class EmaitzakIpiniDAWTest {
 	
 	@Test
 	//sut.createQuestion:  The question is null. The test fail
-	public void test5() {
+	public void test7() {
 		try {
 			
 			//define paramaters
