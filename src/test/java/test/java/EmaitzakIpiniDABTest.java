@@ -11,6 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import dataAccess.DataAccess;
+import domain.Apustua;
 import domain.Event;
 import domain.Question;
 import domain.Quote;
@@ -80,6 +81,8 @@ public class EmaitzakIpiniDABTest {
 			testDA.open();
 			Event ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
 			q = testDA.setQuoteQuestions(ev);
+			Apustua a = new Apustua();
+			q.addApustua(a);
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
@@ -115,6 +118,8 @@ public class EmaitzakIpiniDABTest {
 			testDA.open();
 			Event ev = testDA.addEventWithQuestion(eventText,oneDate,"query2", betMinimum);
 			q = testDA.setQuoteQuestions(ev);
+			Apustua a = new Apustua();
+			q.addApustua(a);
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  

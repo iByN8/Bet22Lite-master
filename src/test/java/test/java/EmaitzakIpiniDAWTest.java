@@ -13,6 +13,7 @@ import org.junit.Test;
 import dataAccess.DataAccess;
 import domain.Event;
 import domain.Question;
+import domain.Quote;
 import exceptions.QuestionAlreadyExist;
 import test.dataAccess.TestDataAccess;
 
@@ -26,6 +27,7 @@ public class EmaitzakIpiniDAWTest {
 	 static TestDataAccess testDA=new TestDataAccess();
 
 	private Event ev;
+	private Quote q;
 	
 	@Test
 	//sut.createQuestion:  The event has one question with a queryText. 
