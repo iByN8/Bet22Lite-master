@@ -18,14 +18,14 @@ public class Sport implements Serializable{
 	@XmlID
 	@Id 
 	private String izena;
-<span class="pc" id="L21">	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)</span>
+<span class="fc" id="L21">	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)</span>
 	private Vector&lt;Event&gt; events=new Vector&lt;Event&gt;();
 	
 	private Integer apustuKantitatea;
 	
 	public Sport() {
-<span class="nc" id="L27">		super();</span>
-<span class="nc" id="L28">	}</span>
+<span class="fc" id="L27">		super();</span>
+<span class="fc" id="L28">	}</span>
 	
 <span class="fc" id="L30">	public Sport(String izena) {</span>
 <span class="fc" id="L31">		this.izena=izena;</span>
@@ -49,12 +49,12 @@ public class Sport implements Serializable{
 <span class="nc" id="L49">	}</span>
 
 	public Integer getApustuKantitatea() {
-<span class="nc" id="L52">		return apustuKantitatea;</span>
+<span class="fc" id="L52">		return apustuKantitatea;</span>
 	}
 
 	public void setApustuKantitatea(Integer apustuKantitatea) {
-<span class="nc" id="L56">		this.apustuKantitatea = apustuKantitatea;</span>
-<span class="nc" id="L57">	}</span>
+<span class="fc" id="L56">		this.apustuKantitatea = apustuKantitatea;</span>
+<span class="fc" id="L57">	}</span>
 	
 	public void eguneratuApustuKantitatea() {
 <span class="fc" id="L60">		this.apustuKantitatea=this.apustuKantitatea+1;</span>

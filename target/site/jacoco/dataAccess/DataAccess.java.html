@@ -109,7 +109,7 @@ public class DataAccess  {
 <span class="fc" id="L109">		   Team team31= new Team(&quot;Djokovic&quot;);</span>
 <span class="fc" id="L110">		   Team team32= new Team(&quot;Federer&quot;);</span>
 		   
-	    
+	     
 <span class="fc" id="L113">			Event ev1=new Event(1, &quot;Atletico-Athletic&quot;, UtilDate.newDate(year,month,17), team1, team2);</span>
 <span class="fc" id="L114">			Event ev2=new Event(2, &quot;Eibar-Barcelona&quot;, UtilDate.newDate(year,month,17), team3, team4);</span>
 <span class="fc" id="L115">			Event ev3=new Event(3, &quot;Getafe-Celta&quot;, UtilDate.newDate(year,month,17), team5, team6);</span>
@@ -246,7 +246,7 @@ public class DataAccess  {
 <span class="fc" id="L246">				q4=ev11.addQuestion(&quot;Zenbat gol sartuko dira?&quot;,2);</span>
 <span class="fc" id="L247">				q5=ev17.addQuestion(&quot;Zeinek irabaziko du partidua?&quot;,1);</span>
 <span class="fc" id="L248">				q6=ev17.addQuestion(&quot;Golak sartuko dira lehenengo zatian?&quot;,2);</span>
-				
+				 
 				
 			}
 <span class="fc" id="L252">			q7 = ev21.addQuestion(&quot;Emaitza?&quot;, 1);</span>
@@ -639,16 +639,16 @@ public class DataAccess  {
 	 * @return collection of events
 	 */
 	public Vector&lt;Event&gt; getEvents(Date date) {
-<span class="nc" id="L642">		System.out.println(&quot;&gt;&gt; DataAccess: getEvents&quot;);</span>
-<span class="nc" id="L643">		Vector&lt;Event&gt; res = new Vector&lt;Event&gt;();	</span>
-<span class="nc" id="L644">		TypedQuery&lt;Event&gt; query = db.createQuery(&quot;SELECT ev FROM Event ev WHERE ev.eventDate=?1&quot;,Event.class);   </span>
-<span class="nc" id="L645">		query.setParameter(1, date);</span>
-<span class="nc" id="L646">		List&lt;Event&gt; events = query.getResultList();</span>
-<span class="nc bnc" id="L647" title="All 2 branches missed.">	 	 for (Event ev:events){</span>
-<span class="nc" id="L648">	 	   System.out.println(ev.toString());		 </span>
-<span class="nc" id="L649">		   res.add(ev);</span>
-<span class="nc" id="L650">		  }</span>
-<span class="nc" id="L651">	 	return res;</span>
+<span class="fc" id="L642">		System.out.println(&quot;&gt;&gt; DataAccess: getEvents&quot;);</span>
+<span class="fc" id="L643">		Vector&lt;Event&gt; res = new Vector&lt;Event&gt;();	</span>
+<span class="fc" id="L644">		TypedQuery&lt;Event&gt; query = db.createQuery(&quot;SELECT ev FROM Event ev WHERE ev.eventDate=?1&quot;,Event.class);   </span>
+<span class="fc" id="L645">		query.setParameter(1, date);</span>
+<span class="fc" id="L646">		List&lt;Event&gt; events = query.getResultList();</span>
+<span class="fc bfc" id="L647" title="All 2 branches covered.">	 	 for (Event ev:events){</span>
+<span class="fc" id="L648">	 	   System.out.println(ev.toString());		 </span>
+<span class="fc" id="L649">		   res.add(ev);</span>
+<span class="fc" id="L650">		  }</span>
+<span class="fc" id="L651">	 	return res;</span>
 	}
 	
 	/**
@@ -729,429 +729,430 @@ public void open(boolean initializeMode){
 <span class="nc" id="L729">	}</span>
 	
 	public boolean gertaerakSortu(String description,Date eventDate, String sport) {
-<span class="nc" id="L732">		boolean b = true;</span>
-<span class="nc" id="L733">		db.getTransaction().begin();</span>
-<span class="nc" id="L734">		Sport spo =db.find(Sport.class, sport);</span>
-<span class="nc bnc" id="L735" title="All 2 branches missed.">		if(spo!=null) {</span>
-<span class="nc" id="L736">			TypedQuery&lt;Event&gt; Equery = db.createQuery(&quot;SELECT e FROM Event e WHERE e.getEventDate() =?1 &quot;,Event.class);</span>
-<span class="nc" id="L737">			Equery.setParameter(1, eventDate);</span>
-<span class="nc bnc" id="L738" title="All 2 branches missed.">			for(Event ev: Equery.getResultList()) {</span>
-<span class="nc bnc" id="L739" title="All 2 branches missed.">				if(ev.getDescription().equals(description)) {</span>
-<span class="nc" id="L740">					b = false;</span>
+<span class="fc" id="L732">		boolean b = true;</span>
+<span class="fc" id="L733">		db.getTransaction().begin();</span>
+<span class="fc" id="L734">		Sport spo =db.find(Sport.class, sport);</span>
+<span class="fc bfc" id="L735" title="All 2 branches covered.">		if(spo!=null) {</span>
+<span class="fc" id="L736">			TypedQuery&lt;Event&gt; Equery = db.createQuery(&quot;SELECT e FROM Event e WHERE e.getEventDate() =?1 &quot;,Event.class);</span>
+<span class="fc" id="L737">			Equery.setParameter(1, eventDate);</span>
+<span class="fc bfc" id="L738" title="All 2 branches covered.">			for(Event ev: Equery.getResultList()) {</span>
+<span class="fc bfc" id="L739" title="All 2 branches covered.">				if(ev.getDescription().equals(description)) {</span>
+<span class="fc" id="L740">					b = false;</span>
 				}
-<span class="nc" id="L742">			}</span>
-<span class="nc bnc" id="L743" title="All 2 branches missed.">			if(b) {</span>
-<span class="nc" id="L744">				String[] taldeak = description.split(&quot;-&quot;);</span>
-<span class="nc" id="L745">				Team lokala = new Team(taldeak[0]);</span>
-<span class="nc" id="L746">				Team kanpokoa = new Team(taldeak[1]);</span>
-<span class="nc" id="L747">				Event e = new Event(description, eventDate, lokala, kanpokoa);</span>
-<span class="nc" id="L748">				e.setSport(spo);</span>
-<span class="nc" id="L749">				spo.addEvent(e);</span>
-<span class="nc" id="L750">				db.persist(e);</span>
+<span class="fc" id="L742">			}</span>
+<span class="fc bfc" id="L743" title="All 2 branches covered.">			if(b) {</span>
+<span class="fc" id="L744">				String[] taldeak = description.split(&quot;-&quot;);</span>
+<span class="fc" id="L745">				Team lokala = new Team(taldeak[0]);</span>
+<span class="fc" id="L746">				Team kanpokoa = new Team(taldeak[1]);</span>
+<span class="fc" id="L747">				Event e = new Event(description, eventDate, lokala, kanpokoa);</span>
+<span class="fc" id="L748">				e.setSport(spo);</span>
+<span class="fc" id="L749">				spo.addEvent(e);</span>
+<span class="fc" id="L750">				db.persist(e);</span>
 			}
-<span class="nc" id="L752">		}else {</span>
-<span class="nc" id="L753">			return false;</span>
+<span class="fc" id="L752">		}else {</span>
+<span class="fc" id="L753">			db.getTransaction().commit();</span>
+<span class="fc" id="L754">			return false;</span>
 		}
-<span class="nc" id="L755">		db.getTransaction().commit();</span>
-<span class="nc" id="L756">		return b;</span>
+<span class="fc" id="L756">		db.getTransaction().commit();</span>
+<span class="fc" id="L757">		return b;</span>
 	}
 	
 	public Quote storeQuote(String forecast, Double Quote, Question question) throws QuoteAlreadyExist {
 		//System.out.println(&quot;&gt;&gt; DataAccess: createQuestion=&gt; event= &quot;+event+&quot; question= &quot;+question+&quot; betMinimum=&quot;+betMinimum);
 		
-<span class="nc" id="L762">		Question q = db.find(Question.class, question.getQuestionNumber());</span>
+<span class="nc" id="L763">		Question q = db.find(Question.class, question.getQuestionNumber());</span>
 		
-<span class="nc bnc" id="L764" title="All 2 branches missed.">		if (q.doesQuoteExist(forecast)) throw new QuoteAlreadyExist(&quot;Kuota existitzen da&quot;);</span>
+<span class="nc bnc" id="L765" title="All 2 branches missed.">		if (q.doesQuoteExist(forecast)) throw new QuoteAlreadyExist(&quot;Kuota existitzen da&quot;);</span>
 		
-<span class="nc" id="L766">		db.getTransaction().begin();</span>
-<span class="nc" id="L767">		Quote quo = q.addQuote(Quote, forecast, q);</span>
-<span class="nc" id="L768">		db.persist(quo); // db.persist(q) not required when CascadeType.PERSIST is added in questions property of Event class</span>
+<span class="nc" id="L767">		db.getTransaction().begin();</span>
+<span class="nc" id="L768">		Quote quo = q.addQuote(Quote, forecast, q);</span>
+<span class="nc" id="L769">		db.persist(quo); // db.persist(q) not required when CascadeType.PERSIST is added in questions property of Event class</span>
 						// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
-<span class="nc" id="L770">		db.getTransaction().commit();</span>
-<span class="nc" id="L771">		return quo;</span>
+<span class="nc" id="L771">		db.getTransaction().commit();</span>
+<span class="nc" id="L772">		return quo;</span>
 	
 	}
 	
 	public void close(){
-<span class="fc" id="L776">		db.close();</span>
-<span class="fc" id="L777">		System.out.println(&quot;DataBase closed&quot;);</span>
-<span class="fc" id="L778">	}</span>
+<span class="fc" id="L777">		db.close();</span>
+<span class="fc" id="L778">		System.out.println(&quot;DataBase closed&quot;);</span>
+<span class="fc" id="L779">	}</span>
 	
 	public Sport findSport(Event q){
-<span class="nc" id="L781">		Event sp = db.find(Event.class, q.getEventNumber());</span>
-<span class="nc" id="L782">		return sp.getSport(); </span>
+<span class="nc" id="L782">		Event sp = db.find(Event.class, q.getEventNumber());</span>
+<span class="nc" id="L783">		return sp.getSport(); </span>
 	}
 	
 	public Event findEvent(Quote q){
-<span class="nc" id="L786">		Quote quo = db.find(Quote.class, q.getQuoteNumber());</span>
-<span class="nc" id="L787">		return quo.getQuestion().getEvent(); </span>
+<span class="nc" id="L787">		Quote quo = db.find(Quote.class, q.getQuoteNumber());</span>
+<span class="nc" id="L788">		return quo.getQuestion().getEvent(); </span>
 	}
 	
 	public Team findTeam(Registered u){
-<span class="nc" id="L791">		Registered user = (Registered) db.find(Registered.class, u.getUsername());</span>
-<span class="nc" id="L792">		return user.getTaldea(); </span>
+<span class="nc" id="L792">		Registered user = (Registered) db.find(Registered.class, u.getUsername());</span>
+<span class="nc" id="L793">		return user.getTaldea(); </span>
 	}
 	
 	public Event findEventFromApustua(Apustua q){
-<span class="nc" id="L796">		Apustua quo = db.find(Apustua.class, q.getApostuaNumber());</span>
-<span class="nc" id="L797">		return quo.getKuota().getQuestion().getEvent(); </span>
+<span class="nc" id="L797">		Apustua quo = db.find(Apustua.class, q.getApostuaNumber());</span>
+<span class="nc" id="L798">		return quo.getKuota().getQuestion().getEvent(); </span>
 	}
 	
 	public Question findQuestionFromQuote(Quote q){
-<span class="nc" id="L801">		Quote quo = db.find(Quote.class, q.getQuoteNumber());</span>
-<span class="nc" id="L802">		return quo.getQuestion(); </span>
+<span class="nc" id="L802">		Quote quo = db.find(Quote.class, q.getQuoteNumber());</span>
+<span class="nc" id="L803">		return quo.getQuestion(); </span>
 	}
 	
 	public Collection&lt;Question&gt; findQuestion(Event event){
-<span class="nc" id="L806">		TypedQuery&lt;Question&gt; Qquery = db.createQuery(&quot;SELECT q FROM Question q WHERE q.getEvent() =?1 &quot;,Question.class);</span>
-<span class="nc" id="L807">		Qquery.setParameter(1, event);</span>
-<span class="nc" id="L808">		return Qquery.getResultList();</span>
+<span class="nc" id="L807">		TypedQuery&lt;Question&gt; Qquery = db.createQuery(&quot;SELECT q FROM Question q WHERE q.getEvent() =?1 &quot;,Question.class);</span>
+<span class="nc" id="L808">		Qquery.setParameter(1, event);</span>
+<span class="nc" id="L809">		return Qquery.getResultList();</span>
 	}
 	
 	public Collection&lt;Quote&gt; findQuote(Question question){
-<span class="nc" id="L812">		TypedQuery&lt;Quote&gt; Qquery = db.createQuery(&quot;SELECT q FROM Quote q WHERE q.getQuestion() =?1 &quot;,Quote.class);</span>
-<span class="nc" id="L813">		Qquery.setParameter(1, question);</span>
-<span class="nc" id="L814">		return Qquery.getResultList();</span>
+<span class="nc" id="L813">		TypedQuery&lt;Quote&gt; Qquery = db.createQuery(&quot;SELECT q FROM Quote q WHERE q.getQuestion() =?1 &quot;,Quote.class);</span>
+<span class="nc" id="L814">		Qquery.setParameter(1, question);</span>
+<span class="nc" id="L815">		return Qquery.getResultList();</span>
 	}
 	
 	public void DiruaSartu(Registered u, Double dirua, Date data, String mota) {
-<span class="nc" id="L818">		Registered user = (Registered) db.find(Registered.class, u.getUsername()); </span>
-<span class="nc" id="L819">		db.getTransaction().begin();</span>
-<span class="nc" id="L820">		Transaction t = new Transaction(user, dirua, data, mota); </span>
-<span class="nc" id="L821">		System.out.println(t.getMota());</span>
-<span class="nc" id="L822">		user.addTransaction(t);</span>
-<span class="nc" id="L823">		user.updateDiruKontua(dirua);</span>
-<span class="nc" id="L824">		db.persist(t);</span>
-<span class="nc" id="L825">		db.getTransaction().commit();</span>
-<span class="nc" id="L826">	}</span>
+<span class="nc" id="L819">		Registered user = (Registered) db.find(Registered.class, u.getUsername()); </span>
+<span class="nc" id="L820">		db.getTransaction().begin();</span>
+<span class="nc" id="L821">		Transaction t = new Transaction(user, dirua, data, mota); </span>
+<span class="nc" id="L822">		System.out.println(t.getMota());</span>
+<span class="nc" id="L823">		user.addTransaction(t);</span>
+<span class="nc" id="L824">		user.updateDiruKontua(dirua);</span>
+<span class="nc" id="L825">		db.persist(t);</span>
+<span class="nc" id="L826">		db.getTransaction().commit();</span>
+<span class="nc" id="L827">	}</span>
 	
 	public boolean ApustuaEgin(Registered u, Vector&lt;Quote&gt; quote, Double balioa, Integer apustuBikoitzaGalarazi) {
-<span class="nc" id="L829">		Registered user = (Registered) db.find(Registered.class, u.getUsername());</span>
+<span class="nc" id="L830">		Registered user = (Registered) db.find(Registered.class, u.getUsername());</span>
 		Boolean b;
-<span class="nc bnc" id="L831" title="All 2 branches missed.">		if(user.getDirukop()&gt;=balioa) {</span>
-<span class="nc" id="L832">			db.getTransaction().begin();</span>
-<span class="nc" id="L833">			ApustuAnitza apustuAnitza = new ApustuAnitza(user, balioa);</span>
-<span class="nc" id="L834">			db.persist(apustuAnitza);</span>
-<span class="nc bnc" id="L835" title="All 2 branches missed.">			for(Quote quo: quote) {</span>
-<span class="nc" id="L836">				Quote kuote = db.find(Quote.class, quo.getQuoteNumber());</span>
-<span class="nc" id="L837">				Apustua ap = new Apustua(apustuAnitza, kuote);</span>
-<span class="nc" id="L838">				db.persist(ap);</span>
-<span class="nc" id="L839">				apustuAnitza.addApustua(ap);</span>
-<span class="nc" id="L840">				kuote.addApustua(ap);</span>
-<span class="nc" id="L841">			}</span>
-<span class="nc" id="L842">			db.getTransaction().commit();</span>
-<span class="nc" id="L843">			db.getTransaction().begin();</span>
-<span class="nc bnc" id="L844" title="All 2 branches missed.">			if(apustuBikoitzaGalarazi==-1) {</span>
-<span class="nc" id="L845">				apustuBikoitzaGalarazi=apustuAnitza.getApustuAnitzaNumber();</span>
+<span class="nc bnc" id="L832" title="All 2 branches missed.">		if(user.getDirukop()&gt;=balioa) {</span>
+<span class="nc" id="L833">			db.getTransaction().begin();</span>
+<span class="nc" id="L834">			ApustuAnitza apustuAnitza = new ApustuAnitza(user, balioa);</span>
+<span class="nc" id="L835">			db.persist(apustuAnitza);</span>
+<span class="nc bnc" id="L836" title="All 2 branches missed.">			for(Quote quo: quote) {</span>
+<span class="nc" id="L837">				Quote kuote = db.find(Quote.class, quo.getQuoteNumber());</span>
+<span class="nc" id="L838">				Apustua ap = new Apustua(apustuAnitza, kuote);</span>
+<span class="nc" id="L839">				db.persist(ap);</span>
+<span class="nc" id="L840">				apustuAnitza.addApustua(ap);</span>
+<span class="nc" id="L841">				kuote.addApustua(ap);</span>
+<span class="nc" id="L842">			}</span>
+<span class="nc" id="L843">			db.getTransaction().commit();</span>
+<span class="nc" id="L844">			db.getTransaction().begin();</span>
+<span class="nc bnc" id="L845" title="All 2 branches missed.">			if(apustuBikoitzaGalarazi==-1) {</span>
+<span class="nc" id="L846">				apustuBikoitzaGalarazi=apustuAnitza.getApustuAnitzaNumber();</span>
 			}
-<span class="nc" id="L847">			apustuAnitza.setApustuKopia(apustuBikoitzaGalarazi);</span>
-<span class="nc" id="L848">			user.updateDiruKontua(-balioa);</span>
-<span class="nc" id="L849">			Transaction t = new Transaction(user, balioa, new Date(), &quot;ApustuaEgin&quot;); </span>
-<span class="nc" id="L850">			user.addApustuAnitza(apustuAnitza);</span>
-<span class="nc bnc" id="L851" title="All 2 branches missed.">			for(Apustua a: apustuAnitza.getApustuak()) {</span>
-<span class="nc" id="L852">				Apustua apu = db.find(Apustua.class, a.getApostuaNumber());</span>
-<span class="nc" id="L853">				Quote q = db.find(Quote.class, apu.getKuota().getQuoteNumber());</span>
-<span class="nc" id="L854">				Sport spo =q.getQuestion().getEvent().getSport();</span>
-<span class="nc" id="L855">				spo.setApustuKantitatea(spo.getApustuKantitatea()+1);</span>
+<span class="nc" id="L848">			apustuAnitza.setApustuKopia(apustuBikoitzaGalarazi);</span>
+<span class="nc" id="L849">			user.updateDiruKontua(-balioa);</span>
+<span class="nc" id="L850">			Transaction t = new Transaction(user, balioa, new Date(), &quot;ApustuaEgin&quot;); </span>
+<span class="nc" id="L851">			user.addApustuAnitza(apustuAnitza);</span>
+<span class="nc bnc" id="L852" title="All 2 branches missed.">			for(Apustua a: apustuAnitza.getApustuak()) {</span>
+<span class="nc" id="L853">				Apustua apu = db.find(Apustua.class, a.getApostuaNumber());</span>
+<span class="nc" id="L854">				Quote q = db.find(Quote.class, apu.getKuota().getQuoteNumber());</span>
+<span class="nc" id="L855">				Sport spo =q.getQuestion().getEvent().getSport();</span>
+<span class="nc" id="L856">				spo.setApustuKantitatea(spo.getApustuKantitatea()+1);</span>
 				
-<span class="nc" id="L857">			}</span>
-<span class="nc" id="L858">			user.addTransaction(t);</span>
-<span class="nc" id="L859">			db.persist(t);</span>
-<span class="nc" id="L860">			db.getTransaction().commit();</span>
-<span class="nc bnc" id="L861" title="All 2 branches missed.">			for(Jarraitzailea reg:user.getJarraitzaileLista()) {</span>
-<span class="nc" id="L862">				Jarraitzailea erab=db.find(Jarraitzailea.class, reg.getJarraitzaileaNumber());</span>
-<span class="nc" id="L863">				b=true;</span>
-<span class="nc bnc" id="L864" title="All 2 branches missed.">				for(ApustuAnitza apu: erab.getNork().getApustuAnitzak()) {</span>
-<span class="nc bnc" id="L865" title="All 2 branches missed.">					if(apu.getApustuKopia()==apustuAnitza.getApustuKopia()) {</span>
-<span class="nc" id="L866">						b=false;</span>
+<span class="nc" id="L858">			}</span>
+<span class="nc" id="L859">			user.addTransaction(t);</span>
+<span class="nc" id="L860">			db.persist(t);</span>
+<span class="nc" id="L861">			db.getTransaction().commit();</span>
+<span class="nc bnc" id="L862" title="All 2 branches missed.">			for(Jarraitzailea reg:user.getJarraitzaileLista()) {</span>
+<span class="nc" id="L863">				Jarraitzailea erab=db.find(Jarraitzailea.class, reg.getJarraitzaileaNumber());</span>
+<span class="nc" id="L864">				b=true;</span>
+<span class="nc bnc" id="L865" title="All 2 branches missed.">				for(ApustuAnitza apu: erab.getNork().getApustuAnitzak()) {</span>
+<span class="nc bnc" id="L866" title="All 2 branches missed.">					if(apu.getApustuKopia()==apustuAnitza.getApustuKopia()) {</span>
+<span class="nc" id="L867">						b=false;</span>
 					}
-<span class="nc" id="L868">				}</span>
-<span class="nc bnc" id="L869" title="All 2 branches missed.">				if(b) {</span>
-<span class="nc bnc" id="L870" title="All 2 branches missed.">					if(erab.getNork().getDiruLimitea()&lt;balioa) {</span>
-<span class="nc" id="L871">						this.ApustuaEgin(erab.getNork(), quote, erab.getNork().getDiruLimitea(), apustuBikoitzaGalarazi);</span>
+<span class="nc" id="L869">				}</span>
+<span class="nc bnc" id="L870" title="All 2 branches missed.">				if(b) {</span>
+<span class="nc bnc" id="L871" title="All 2 branches missed.">					if(erab.getNork().getDiruLimitea()&lt;balioa) {</span>
+<span class="nc" id="L872">						this.ApustuaEgin(erab.getNork(), quote, erab.getNork().getDiruLimitea(), apustuBikoitzaGalarazi);</span>
 					}else{
-<span class="nc" id="L873">						this.ApustuaEgin(erab.getNork(), quote, balioa, apustuBikoitzaGalarazi);</span>
+<span class="nc" id="L874">						this.ApustuaEgin(erab.getNork(), quote, balioa, apustuBikoitzaGalarazi);</span>
 					}
 				}
-<span class="nc" id="L876">			}</span>
-<span class="nc" id="L877">			return true; </span>
+<span class="nc" id="L877">			}</span>
+<span class="nc" id="L878">			return true; </span>
 		}else{
-<span class="nc" id="L879">			return false; </span>
+<span class="nc" id="L880">			return false; </span>
 		}
 		
 	}
 	
 	public void apustuaEzabatu(Registered user1, ApustuAnitza ap) {
-<span class="nc" id="L885">		Registered user = (Registered) db.find(Registered.class, user1.getUsername());</span>
-<span class="nc" id="L886">		ApustuAnitza apustuAnitza = db.find(ApustuAnitza.class, ap.getApustuAnitzaNumber());</span>
-<span class="nc" id="L887">		db.getTransaction().begin();</span>
-<span class="nc" id="L888">		user.updateDiruKontua(apustuAnitza.getBalioa());</span>
-<span class="nc" id="L889">		Transaction t = new Transaction(user, apustuAnitza.getBalioa(), new Date(), &quot;ApustuaEzabatu&quot;);</span>
-<span class="nc" id="L890">		user.addTransaction(t);</span>
-<span class="nc" id="L891">		db.persist(t);</span>
-<span class="nc" id="L892">		user.removeApustua(apustuAnitza);</span>
+<span class="nc" id="L886">		Registered user = (Registered) db.find(Registered.class, user1.getUsername());</span>
+<span class="nc" id="L887">		ApustuAnitza apustuAnitza = db.find(ApustuAnitza.class, ap.getApustuAnitzaNumber());</span>
+<span class="nc" id="L888">		db.getTransaction().begin();</span>
+<span class="nc" id="L889">		user.updateDiruKontua(apustuAnitza.getBalioa());</span>
+<span class="nc" id="L890">		Transaction t = new Transaction(user, apustuAnitza.getBalioa(), new Date(), &quot;ApustuaEzabatu&quot;);</span>
+<span class="nc" id="L891">		user.addTransaction(t);</span>
+<span class="nc" id="L892">		db.persist(t);</span>
+<span class="nc" id="L893">		user.removeApustua(apustuAnitza);</span>
 		int i;
-<span class="nc bnc" id="L894" title="All 2 branches missed.">		for(i=0; i&lt;apustuAnitza.getApustuak().size(); i++) {</span>
-<span class="nc" id="L895">			apustuAnitza.getApustuak().get(i).getKuota().removeApustua(apustuAnitza.getApustuak().get(i));</span>
-<span class="nc" id="L896">			Sport spo =apustuAnitza.getApustuak().get(i).getKuota().getQuestion().getEvent().getSport();</span>
-<span class="nc" id="L897">			spo.setApustuKantitatea(spo.getApustuKantitatea()-1);</span>
+<span class="nc bnc" id="L895" title="All 2 branches missed.">		for(i=0; i&lt;apustuAnitza.getApustuak().size(); i++) {</span>
+<span class="nc" id="L896">			apustuAnitza.getApustuak().get(i).getKuota().removeApustua(apustuAnitza.getApustuak().get(i));</span>
+<span class="nc" id="L897">			Sport spo =apustuAnitza.getApustuak().get(i).getKuota().getQuestion().getEvent().getSport();</span>
+<span class="nc" id="L898">			spo.setApustuKantitatea(spo.getApustuKantitatea()-1);</span>
 		}
-<span class="nc" id="L899">		db.remove(apustuAnitza);</span>
-<span class="nc" id="L900">		db.getTransaction().commit();</span>
-<span class="nc" id="L901">	}</span>
+<span class="nc" id="L900">		db.remove(apustuAnitza);</span>
+<span class="nc" id="L901">		db.getTransaction().commit();</span>
+<span class="nc" id="L902">	}</span>
 	
 	public List&lt;Apustua&gt; findApustua(Registered u){
-<span class="nc" id="L904">		Registered user = (Registered) db.find(Registered.class, u.getUsername()); </span>
-<span class="nc" id="L905">		TypedQuery&lt;Apustua&gt; Aquery = db.createQuery(&quot;SELECT a FROM Apustua a WHERE a.getUser().getUsername() =?1 &quot;, Apustua.class);</span>
-<span class="nc" id="L906">		Aquery.setParameter(1, u.getUsername());</span>
-<span class="nc" id="L907">		return Aquery.getResultList();</span>
+<span class="nc" id="L905">		Registered user = (Registered) db.find(Registered.class, u.getUsername()); </span>
+<span class="nc" id="L906">		TypedQuery&lt;Apustua&gt; Aquery = db.createQuery(&quot;SELECT a FROM Apustua a WHERE a.getUser().getUsername() =?1 &quot;, Apustua.class);</span>
+<span class="nc" id="L907">		Aquery.setParameter(1, u.getUsername());</span>
+<span class="nc" id="L908">		return Aquery.getResultList();</span>
 	}
 	public List&lt;ApustuAnitza&gt; findApustuAnitza(Registered u){
-<span class="nc" id="L910">		Registered user = (Registered) db.find(Registered.class, u.getUsername()); </span>
-<span class="nc" id="L911">		TypedQuery&lt;ApustuAnitza&gt; Aquery = db.createQuery(&quot;SELECT aa FROM ApustuAnitza aa WHERE aa.getUser().getUsername() =?1 &quot;, ApustuAnitza.class);</span>
-<span class="nc" id="L912">		Aquery.setParameter(1, u.getUsername());</span>
-<span class="nc" id="L913">		return Aquery.getResultList();</span>
+<span class="nc" id="L911">		Registered user = (Registered) db.find(Registered.class, u.getUsername()); </span>
+<span class="nc" id="L912">		TypedQuery&lt;ApustuAnitza&gt; Aquery = db.createQuery(&quot;SELECT aa FROM ApustuAnitza aa WHERE aa.getUser().getUsername() =?1 &quot;, ApustuAnitza.class);</span>
+<span class="nc" id="L913">		Aquery.setParameter(1, u.getUsername());</span>
+<span class="nc" id="L914">		return Aquery.getResultList();</span>
 	}
 	
 	public List&lt;Transaction&gt; findTransakzioak(Registered u){
-<span class="nc" id="L917">		Registered user = (Registered) db.find(Registered.class, u.getUsername()); </span>
-<span class="nc" id="L918">		TypedQuery&lt;Transaction&gt; Tquery = db.createQuery(&quot;SELECT t FROM Transaction t WHERE t.getErabiltzailea().getUsername() =?1 &quot;, Transaction.class);</span>
-<span class="nc" id="L919">		Tquery.setParameter(1, u.getUsername());</span>
-<span class="nc" id="L920">		return Tquery.getResultList();</span>
+<span class="nc" id="L918">		Registered user = (Registered) db.find(Registered.class, u.getUsername()); </span>
+<span class="nc" id="L919">		TypedQuery&lt;Transaction&gt; Tquery = db.createQuery(&quot;SELECT t FROM Transaction t WHERE t.getErabiltzailea().getUsername() =?1 &quot;, Transaction.class);</span>
+<span class="nc" id="L920">		Tquery.setParameter(1, u.getUsername());</span>
+<span class="nc" id="L921">		return Tquery.getResultList();</span>
 		
 	}
 	
 	public void ApustuaIrabazi(ApustuAnitza apustua) {
-<span class="nc" id="L925">		ApustuAnitza apustuAnitza = db.find(ApustuAnitza.class, apustua.getApustuAnitzaNumber());</span>
-<span class="nc" id="L926">		Registered reg = (Registered) apustuAnitza.getUser();</span>
-<span class="nc" id="L927">		Registered r = (Registered) db.find(Registered.class, reg.getUsername());</span>
-<span class="nc" id="L928">		db.getTransaction().begin();</span>
-<span class="nc" id="L929">		apustuAnitza.setEgoera(&quot;irabazita&quot;);</span>
-<span class="nc" id="L930">		Double d=apustuAnitza.getBalioa();</span>
-<span class="nc bnc" id="L931" title="All 2 branches missed.">		for(Apustua ap: apustuAnitza.getApustuak()) {</span>
-<span class="nc" id="L932">			d = d*ap.getKuota().getQuote();</span>
-<span class="nc" id="L933">		}</span>
-<span class="nc" id="L934">		r.updateDiruKontua(d);</span>
-<span class="nc" id="L935">		r.setIrabazitakoa(r.getIrabazitakoa()+d);</span>
-<span class="nc" id="L936">		r.setZenbat(r.getZenbat()+1);</span>
-<span class="nc" id="L937">		Transaction t = new Transaction(r, d, new Date(), &quot;ApustuaIrabazi&quot;); </span>
-<span class="nc" id="L938">		db.persist(t);</span>
-<span class="nc" id="L939">		db.getTransaction().commit();</span>
-<span class="nc" id="L940">	}</span>
+<span class="fc" id="L926">		ApustuAnitza apustuAnitza = db.find(ApustuAnitza.class, apustua.getApustuAnitzaNumber());</span>
+<span class="fc" id="L927">		Registered reg = (Registered) apustuAnitza.getUser();</span>
+<span class="nc" id="L928">		Registered r = (Registered) db.find(Registered.class, reg.getUsername());</span>
+<span class="nc" id="L929">		db.getTransaction().begin();</span>
+<span class="nc" id="L930">		apustuAnitza.setEgoera(&quot;irabazita&quot;);</span>
+<span class="nc" id="L931">		Double d=apustuAnitza.getBalioa();</span>
+<span class="nc bnc" id="L932" title="All 2 branches missed.">		for(Apustua ap: apustuAnitza.getApustuak()) {</span>
+<span class="nc" id="L933">			d = d*ap.getKuota().getQuote();</span>
+<span class="nc" id="L934">		}</span>
+<span class="nc" id="L935">		r.updateDiruKontua(d);</span>
+<span class="nc" id="L936">		r.setIrabazitakoa(r.getIrabazitakoa()+d);</span>
+<span class="nc" id="L937">		r.setZenbat(r.getZenbat()+1);</span>
+<span class="nc" id="L938">		Transaction t = new Transaction(r, d, new Date(), &quot;ApustuaIrabazi&quot;); </span>
+<span class="nc" id="L939">		db.persist(t);</span>
+<span class="nc" id="L940">		db.getTransaction().commit();</span>
+<span class="nc" id="L941">	}</span>
 	
 	public void EmaitzakIpini(Quote quote) throws EventNotFinished{
 		
-<span class="nc" id="L944">		Quote q = db.find(Quote.class, quote); </span>
-<span class="nc" id="L945">		String result = q.getForecast();</span>
+<span class="nc" id="L945">		Quote q = db.find(Quote.class, quote); </span>
+<span class="nc" id="L946">		String result = q.getForecast();</span>
 		
-<span class="nc bnc" id="L947" title="All 2 branches missed.">		if(new Date().compareTo(q.getQuestion().getEvent().getEventDate())&lt;0)</span>
-<span class="nc" id="L948">			throw new EventNotFinished();</span>
+<span class="nc bnc" id="L948" title="All 2 branches missed.">		if(new Date().compareTo(q.getQuestion().getEvent().getEventDate())&lt;0)</span>
+<span class="nc" id="L949">			throw new EventNotFinished();</span>
 
-<span class="nc" id="L950">		Vector&lt;Apustua&gt; listApustuak = q.getApustuak();</span>
-<span class="nc" id="L951">		db.getTransaction().begin();</span>
-<span class="nc" id="L952">		Question que = q.getQuestion(); </span>
-<span class="nc" id="L953">		Question question = db.find(Question.class, que); </span>
-<span class="nc" id="L954">		question.setResult(result);</span>
-<span class="nc bnc" id="L955" title="All 2 branches missed.">		for(Quote quo: question.getQuotes()) {</span>
-<span class="nc bnc" id="L956" title="All 2 branches missed.">			for(Apustua apu: quo.getApustuak()) {</span>
+<span class="nc" id="L951">		Vector&lt;Apustua&gt; listApustuak = q.getApustuak();</span>
+<span class="nc" id="L952">		db.getTransaction().begin();</span>
+<span class="nc" id="L953">		Question que = q.getQuestion(); </span>
+<span class="nc" id="L954">		Question question = db.find(Question.class, que); </span>
+<span class="nc" id="L955">		question.setResult(result);</span>
+<span class="nc bnc" id="L956" title="All 2 branches missed.">		for(Quote quo: question.getQuotes()) {</span>
+<span class="nc bnc" id="L957" title="All 2 branches missed.">			for(Apustua apu: quo.getApustuak()) {</span>
 				
-<span class="nc" id="L958">				Boolean b=apu.galdutaMarkatu(quo);</span>
-<span class="nc bnc" id="L959" title="All 2 branches missed.">				if(b) {</span>
-<span class="nc" id="L960">					apu.getApustuAnitza().setEgoera(&quot;galduta&quot;);</span>
+<span class="nc" id="L959">				Boolean b=apu.galdutaMarkatu(quo);</span>
+<span class="nc bnc" id="L960" title="All 2 branches missed.">				if(b) {</span>
+<span class="nc" id="L961">					apu.getApustuAnitza().setEgoera(&quot;galduta&quot;);</span>
 				}else {
-<span class="nc" id="L962">					apu.setEgoera(&quot;irabazita&quot;);</span>
+<span class="nc" id="L963">					apu.setEgoera(&quot;irabazita&quot;);</span>
 				}
-<span class="nc" id="L964">			}</span>
-<span class="nc" id="L965">		}</span>
-<span class="nc" id="L966">		db.getTransaction().commit();</span>
-<span class="nc bnc" id="L967" title="All 2 branches missed.">		for(Apustua a : listApustuak) {</span>
-<span class="nc" id="L968">			db.getTransaction().begin();</span>
-<span class="nc" id="L969">			Boolean bool=a.getApustuAnitza().irabazitaMarkatu();</span>
-<span class="nc" id="L970">			db.getTransaction().commit();</span>
-<span class="nc bnc" id="L971" title="All 2 branches missed.">			if(bool) {</span>
-<span class="nc" id="L972">				this.ApustuaIrabazi(a.getApustuAnitza());</span>
+<span class="nc" id="L965">			}</span>
+<span class="nc" id="L966">		}</span>
+<span class="nc" id="L967">		db.getTransaction().commit();</span>
+<span class="nc bnc" id="L968" title="All 2 branches missed.">		for(Apustua a : listApustuak) {</span>
+<span class="nc" id="L969">			db.getTransaction().begin();</span>
+<span class="nc" id="L970">			Boolean bool=a.getApustuAnitza().irabazitaMarkatu();</span>
+<span class="nc" id="L971">			db.getTransaction().commit();</span>
+<span class="nc bnc" id="L972" title="All 2 branches missed.">			if(bool) {</span>
+<span class="nc" id="L973">				this.ApustuaIrabazi(a.getApustuAnitza());</span>
 			}
-<span class="nc" id="L974">		}</span>
-<span class="nc" id="L975">	}</span>
+<span class="nc" id="L975">		}</span>
+<span class="nc" id="L976">	}</span>
 	
 	public boolean gertaeraEzabatu(Event ev) {
-<span class="nc" id="L978">		Event event  = db.find(Event.class, ev); </span>
-<span class="nc" id="L979">		boolean resultB = true; </span>
-<span class="nc" id="L980">		List&lt;Question&gt; listQ = event.getQuestions(); </span>
+<span class="fc" id="L979">		Event event  = db.find(Event.class, ev); </span>
+<span class="fc" id="L980">		boolean resultB = true; </span>
+<span class="fc" id="L981">		List&lt;Question&gt; listQ = event.getQuestions(); </span>
 	
-<span class="nc bnc" id="L982" title="All 2 branches missed.">		for(Question q : listQ) {</span>
-<span class="nc bnc" id="L983" title="All 2 branches missed.">			if(q.getResult() == null) {</span>
-<span class="nc" id="L984">				resultB = false; </span>
+<span class="fc bfc" id="L983" title="All 2 branches covered.">		for(Question q : listQ) {</span>
+<span class="fc bfc" id="L984" title="All 2 branches covered.">			if(q.getResult() == null) {</span>
+<span class="fc" id="L985">				resultB = false; </span>
 			}
-<span class="nc" id="L986">		}</span>
-<span class="nc bnc" id="L987" title="All 2 branches missed.">		if(resultB == false) {</span>
-<span class="nc" id="L988">			return false;</span>
-<span class="nc bnc" id="L989" title="All 2 branches missed.">		}else if(new Date().compareTo(event.getEventDate())&lt;0) {</span>
-<span class="nc" id="L990">			TypedQuery&lt;Quote&gt; Qquery = db.createQuery(&quot;SELECT q FROM Quote q WHERE q.getQuestion().getEvent().getEventNumber() =?1&quot;, Quote.class);</span>
-<span class="nc" id="L991">			Qquery.setParameter(1, event.getEventNumber()); </span>
-<span class="nc" id="L992">			List&lt;Quote&gt; listQUO = Qquery.getResultList();</span>
-<span class="nc bnc" id="L993" title="All 2 branches missed.">			for(int j=0; j&lt;listQUO.size(); j++) {</span>
-<span class="nc" id="L994">				Quote quo = db.find(Quote.class, listQUO.get(j));</span>
-<span class="nc bnc" id="L995" title="All 2 branches missed.">				for(int i=0; i&lt;quo.getApustuak().size(); i++) {</span>
-<span class="nc" id="L996">					ApustuAnitza apustuAnitza = quo.getApustuak().get(i).getApustuAnitza();</span>
-<span class="nc" id="L997">					ApustuAnitza ap1 = db.find(ApustuAnitza.class, apustuAnitza.getApustuAnitzaNumber());</span>
-<span class="nc" id="L998">					db.getTransaction().begin();</span>
-<span class="nc" id="L999">					ap1.removeApustua(quo.getApustuak().get(i));</span>
-<span class="nc" id="L1000">					db.getTransaction().commit();</span>
-<span class="nc bnc" id="L1001" title="All 4 branches missed.">					if(ap1.getApustuak().isEmpty() &amp;&amp; !ap1.getEgoera().equals(&quot;galduta&quot;)) {</span>
-<span class="nc" id="L1002">						this.apustuaEzabatu(ap1.getUser(), ap1);</span>
-<span class="nc bnc" id="L1003" title="All 4 branches missed.">					}else if(!ap1.getApustuak().isEmpty() &amp;&amp; ap1.irabazitaMarkatu()){</span>
-<span class="nc" id="L1004">						this.ApustuaIrabazi(ap1);</span>
+<span class="fc" id="L987">		}</span>
+<span class="fc bfc" id="L988" title="All 2 branches covered.">		if(resultB == false) {</span>
+<span class="fc" id="L989">			return false;</span>
+<span class="fc bfc" id="L990" title="All 2 branches covered.">		}else if(new Date().compareTo(event.getEventDate())&lt;0) {</span>
+<span class="fc" id="L991">			TypedQuery&lt;Quote&gt; Qquery = db.createQuery(&quot;SELECT q FROM Quote q WHERE q.getQuestion().getEvent().getEventNumber() =?1&quot;, Quote.class);</span>
+<span class="fc" id="L992">			Qquery.setParameter(1, event.getEventNumber()); </span>
+<span class="fc" id="L993">			List&lt;Quote&gt; listQUO = Qquery.getResultList();</span>
+<span class="fc bfc" id="L994" title="All 2 branches covered.">			for(int j=0; j&lt;listQUO.size(); j++) {</span>
+<span class="fc" id="L995">				Quote quo = db.find(Quote.class, listQUO.get(j));</span>
+<span class="pc bfc" id="L996" title="All 2 branches covered.">				for(int i=0; i&lt;quo.getApustuak().size(); i++) {</span>
+<span class="fc" id="L997">					ApustuAnitza apustuAnitza = quo.getApustuak().get(i).getApustuAnitza();</span>
+<span class="fc" id="L998">					ApustuAnitza ap1 = db.find(ApustuAnitza.class, apustuAnitza.getApustuAnitzaNumber());</span>
+<span class="fc" id="L999">					db.getTransaction().begin();</span>
+<span class="fc" id="L1000">					ap1.removeApustua(quo.getApustuak().get(i));</span>
+<span class="fc" id="L1001">					db.getTransaction().commit();</span>
+<span class="pc bpc" id="L1002" title="1 of 4 branches missed.">					if(ap1.getApustuak().isEmpty() &amp;&amp; !ap1.getEgoera().equals(&quot;galduta&quot;)) {</span>
+<span class="nc" id="L1003">						this.apustuaEzabatu(ap1.getUser(), ap1);</span>
+<span class="pc bpc" id="L1004" title="1 of 4 branches missed.">					}else if(!ap1.getApustuak().isEmpty() &amp;&amp; ap1.irabazitaMarkatu()){</span>
+<span class="nc" id="L1005">						this.ApustuaIrabazi(ap1);</span>
 					}
-<span class="nc" id="L1006">					db.getTransaction().begin();</span>
-<span class="nc" id="L1007">					Sport spo =quo.getQuestion().getEvent().getSport();</span>
-<span class="nc" id="L1008">					spo.setApustuKantitatea(spo.getApustuKantitatea()-1);</span>
-<span class="nc" id="L1009">					db.getTransaction().commit();</span>
+<span class="fc" id="L1007">					db.getTransaction().begin();</span>
+<span class="fc" id="L1008">					Sport spo =quo.getQuestion().getEvent().getSport();</span>
+<span class="fc" id="L1009">					spo.setApustuKantitatea(spo.getApustuKantitatea()-1);</span>
+<span class="nc" id="L1010">					db.getTransaction().commit();</span>
 				}
 			}
 			
 		}
-<span class="nc" id="L1014">		db.getTransaction().begin();</span>
-<span class="nc" id="L1015">		db.remove(event);</span>
-<span class="nc" id="L1016">		db.getTransaction().commit();</span>
-<span class="nc" id="L1017">		return true; </span>
+<span class="fc" id="L1015">		db.getTransaction().begin();</span>
+<span class="fc" id="L1016">		db.remove(event);</span>
+<span class="fc" id="L1017">		db.getTransaction().commit();</span>
+<span class="fc" id="L1018">		return true; </span>
 	}
 	
 	public String saldoaBistaratu(Registered u) {
-<span class="nc" id="L1021">		Registered reg = (Registered)db.find(Registered.class, u.getUsername());</span>
-<span class="nc" id="L1022">		return reg.getDirukop().toString();</span>
+<span class="nc" id="L1022">		Registered reg = (Registered)db.find(Registered.class, u.getUsername());</span>
+<span class="nc" id="L1023">		return reg.getDirukop().toString();</span>
 	}
 	
 	
 	public List&lt;Registered&gt; rankingLortu(){
-<span class="nc" id="L1027">		TypedQuery&lt;Registered&gt; Rquery = db.createQuery(&quot;SELECT r FROM Registered r&quot;, Registered.class);</span>
-<span class="nc" id="L1028">		List&lt;Registered&gt; listR = Rquery.getResultList();</span>
-<span class="nc" id="L1029">		List&lt;Registered&gt; ema= new ArrayList&lt;Registered&gt;();</span>
+<span class="nc" id="L1028">		TypedQuery&lt;Registered&gt; Rquery = db.createQuery(&quot;SELECT r FROM Registered r&quot;, Registered.class);</span>
+<span class="nc" id="L1029">		List&lt;Registered&gt; listR = Rquery.getResultList();</span>
+<span class="nc" id="L1030">		List&lt;Registered&gt; ema= new ArrayList&lt;Registered&gt;();</span>
 		int i;
-<span class="nc bnc" id="L1031" title="All 2 branches missed.">		for(Registered r: listR) {</span>
-<span class="nc bnc" id="L1032" title="All 2 branches missed.">			if(ema.isEmpty()) {</span>
-<span class="nc" id="L1033">				ema.add(0, r);</span>
+<span class="nc bnc" id="L1032" title="All 2 branches missed.">		for(Registered r: listR) {</span>
+<span class="nc bnc" id="L1033" title="All 2 branches missed.">			if(ema.isEmpty()) {</span>
+<span class="nc" id="L1034">				ema.add(0, r);</span>
 			}else {
-<span class="nc" id="L1035">				i=0;</span>
-<span class="nc bnc" id="L1036" title="All 4 branches missed.">				while(i&lt;ema.size() &amp;&amp; r.getIrabazitakoa()&lt;ema.get(i).getIrabazitakoa()) {</span>
-<span class="nc" id="L1037">					i++;</span>
+<span class="nc" id="L1036">				i=0;</span>
+<span class="nc bnc" id="L1037" title="All 4 branches missed.">				while(i&lt;ema.size() &amp;&amp; r.getIrabazitakoa()&lt;ema.get(i).getIrabazitakoa()) {</span>
+<span class="nc" id="L1038">					i++;</span>
 				}
-<span class="nc" id="L1039">				ema.add(i, r);</span>
+<span class="nc" id="L1040">				ema.add(i, r);</span>
 			}
-<span class="nc" id="L1041">		}</span>
-<span class="nc" id="L1042">		return ema;</span>
+<span class="nc" id="L1042">		}</span>
+<span class="nc" id="L1043">		return ema;</span>
 	}
 	
 	public List&lt;Event&gt; getEventsAll() {	
-<span class="nc" id="L1046">		TypedQuery&lt;Event&gt; query = db.createQuery(&quot;SELECT ev FROM Event ev &quot;,Event.class);   </span>
-<span class="nc" id="L1047">		List&lt;Event&gt; events = query.getResultList();</span>
-<span class="nc" id="L1048">	 	return events;</span>
+<span class="nc" id="L1047">		TypedQuery&lt;Event&gt; query = db.createQuery(&quot;SELECT ev FROM Event ev &quot;,Event.class);   </span>
+<span class="nc" id="L1048">		List&lt;Event&gt; events = query.getResultList();</span>
+<span class="nc" id="L1049">	 	return events;</span>
 	}
 	
 	
 	
 	public boolean gertaerakKopiatu(Event e, Date date) {
-<span class="nc" id="L1054">		Boolean b=false;</span>
-<span class="nc" id="L1055">		Event gertaera = db.find(Event.class, e.getEventNumber());</span>
-<span class="nc" id="L1056">		db.getTransaction().begin();</span>
+<span class="nc" id="L1055">		Boolean b=false;</span>
+<span class="nc" id="L1056">		Event gertaera = db.find(Event.class, e.getEventNumber());</span>
+<span class="nc" id="L1057">		db.getTransaction().begin();</span>
 		
 		
-<span class="nc" id="L1059">		TypedQuery&lt;Event&gt; query = db.createQuery(&quot;SELECT ev FROM Event ev WHERE ev.getDescription()=?1 and ev.getEventDate()=?2&quot;,Event.class);   </span>
-<span class="nc" id="L1060">		query.setParameter(1,gertaera.getDescription());</span>
-<span class="nc" id="L1061">		query.setParameter(2, date);</span>
-<span class="nc bnc" id="L1062" title="All 2 branches missed.">		if(query.getResultList().isEmpty()) {</span>
-<span class="nc" id="L1063">			b=true;</span>
-<span class="nc" id="L1064">			String[] taldeak = gertaera.getDescription().split(&quot;-&quot;);</span>
-<span class="nc" id="L1065">			Team lokala = new Team(taldeak[0]);</span>
-<span class="nc" id="L1066">			Team kanpokoa = new Team(taldeak[1]);</span>
-<span class="nc" id="L1067">			Event gertKopiatu = new Event(gertaera.getDescription(), date, lokala, kanpokoa);</span>
-<span class="nc" id="L1068">			gertKopiatu.setSport(gertaera.getSport());</span>
-<span class="nc" id="L1069">			gertaera.getSport().addEvent(gertKopiatu);</span>
-<span class="nc" id="L1070">			db.persist(gertKopiatu);</span>
-<span class="nc bnc" id="L1071" title="All 2 branches missed.">				for(Question q : gertaera.getQuestions()) {</span>
-<span class="nc" id="L1072">					Question que= new Question(q.getQuestion(), q.getBetMinimum(), gertKopiatu);</span>
-<span class="nc" id="L1073">					gertKopiatu.listaraGehitu(que);</span>
-<span class="nc" id="L1074">					Question galdera = db.find(Question.class, q.getQuestionNumber());</span>
-<span class="nc" id="L1075">					db.persist(que);</span>
-<span class="nc bnc" id="L1076" title="All 2 branches missed.">					for(Quote k: galdera.getQuotes()) {</span>
-<span class="nc" id="L1077">						Quote kuo= new Quote(k.getQuote(), k.getForecast(), que);</span>
-<span class="nc" id="L1078">						que.listaraGehitu(kuo);</span>
-<span class="nc" id="L1079">						db.persist(kuo);</span>
-<span class="nc" id="L1080">					}</span>
-<span class="nc" id="L1081">				}</span>
+<span class="nc" id="L1060">		TypedQuery&lt;Event&gt; query = db.createQuery(&quot;SELECT ev FROM Event ev WHERE ev.getDescription()=?1 and ev.getEventDate()=?2&quot;,Event.class);   </span>
+<span class="nc" id="L1061">		query.setParameter(1,gertaera.getDescription());</span>
+<span class="nc" id="L1062">		query.setParameter(2, date);</span>
+<span class="nc bnc" id="L1063" title="All 2 branches missed.">		if(query.getResultList().isEmpty()) {</span>
+<span class="nc" id="L1064">			b=true;</span>
+<span class="nc" id="L1065">			String[] taldeak = gertaera.getDescription().split(&quot;-&quot;);</span>
+<span class="nc" id="L1066">			Team lokala = new Team(taldeak[0]);</span>
+<span class="nc" id="L1067">			Team kanpokoa = new Team(taldeak[1]);</span>
+<span class="nc" id="L1068">			Event gertKopiatu = new Event(gertaera.getDescription(), date, lokala, kanpokoa);</span>
+<span class="nc" id="L1069">			gertKopiatu.setSport(gertaera.getSport());</span>
+<span class="nc" id="L1070">			gertaera.getSport().addEvent(gertKopiatu);</span>
+<span class="nc" id="L1071">			db.persist(gertKopiatu);</span>
+<span class="nc bnc" id="L1072" title="All 2 branches missed.">				for(Question q : gertaera.getQuestions()) {</span>
+<span class="nc" id="L1073">					Question que= new Question(q.getQuestion(), q.getBetMinimum(), gertKopiatu);</span>
+<span class="nc" id="L1074">					gertKopiatu.listaraGehitu(que);</span>
+<span class="nc" id="L1075">					Question galdera = db.find(Question.class, q.getQuestionNumber());</span>
+<span class="nc" id="L1076">					db.persist(que);</span>
+<span class="nc bnc" id="L1077" title="All 2 branches missed.">					for(Quote k: galdera.getQuotes()) {</span>
+<span class="nc" id="L1078">						Quote kuo= new Quote(k.getQuote(), k.getForecast(), que);</span>
+<span class="nc" id="L1079">						que.listaraGehitu(kuo);</span>
+<span class="nc" id="L1080">						db.persist(kuo);</span>
+<span class="nc" id="L1081">					}</span>
+<span class="nc" id="L1082">				}</span>
 		}
-<span class="nc" id="L1083">		db.getTransaction().commit();</span>
-<span class="nc" id="L1084">		return b;</span>
+<span class="nc" id="L1084">		db.getTransaction().commit();</span>
+<span class="nc" id="L1085">		return b;</span>
 	}
 	
 	public boolean jarraitu(Registered jabea, Registered jarraitua, Double limit) {
-<span class="nc" id="L1088">		Boolean b=false;</span>
-<span class="nc" id="L1089">		Registered jarraitu = (Registered) db.find(Registered.class, jarraitua.getUsername());</span>
-<span class="nc" id="L1090">		Registered harpideduna = (Registered) db.find(Registered.class, jabea.getUsername());</span>
-<span class="nc bnc" id="L1091" title="All 2 branches missed.">		if(!harpideduna.getJarraitutakoLista().contains(jarraitu)) {</span>
-<span class="nc" id="L1092">			db.getTransaction().begin();</span>
-<span class="nc" id="L1093">			Jarraitzailea jar = new Jarraitzailea(harpideduna, jarraitu);</span>
-<span class="nc" id="L1094">			harpideduna.addJarraitutako(jar);</span>
-<span class="nc" id="L1095">			jarraitu.addJarraitzailea(jar);</span>
-<span class="nc" id="L1096">			b=true;</span>
-<span class="nc" id="L1097">			db.persist(jar);</span>
-<span class="nc" id="L1098">			harpideduna.setDiruLimitea(limit);</span>
-<span class="nc" id="L1099">			db.getTransaction().commit();</span>
+<span class="nc" id="L1089">		Boolean b=false;</span>
+<span class="nc" id="L1090">		Registered jarraitu = (Registered) db.find(Registered.class, jarraitua.getUsername());</span>
+<span class="nc" id="L1091">		Registered harpideduna = (Registered) db.find(Registered.class, jabea.getUsername());</span>
+<span class="nc bnc" id="L1092" title="All 2 branches missed.">		if(!harpideduna.getJarraitutakoLista().contains(jarraitu)) {</span>
+<span class="nc" id="L1093">			db.getTransaction().begin();</span>
+<span class="nc" id="L1094">			Jarraitzailea jar = new Jarraitzailea(harpideduna, jarraitu);</span>
+<span class="nc" id="L1095">			harpideduna.addJarraitutako(jar);</span>
+<span class="nc" id="L1096">			jarraitu.addJarraitzailea(jar);</span>
+<span class="nc" id="L1097">			b=true;</span>
+<span class="nc" id="L1098">			db.persist(jar);</span>
+<span class="nc" id="L1099">			harpideduna.setDiruLimitea(limit);</span>
+<span class="nc" id="L1100">			db.getTransaction().commit();</span>
 		}
-<span class="nc" id="L1101">		return b;</span>
+<span class="nc" id="L1102">		return b;</span>
 	}
 	
 	
 	public Sport popularrenaLortu() {
-<span class="nc" id="L1106">		Integer max=Integer.MIN_VALUE;</span>
-<span class="nc" id="L1107">		Sport s=null;</span>
-<span class="nc" id="L1108">		TypedQuery&lt;Sport&gt; query = db.createQuery(&quot;SELECT sp FROM Sport sp &quot;,Sport.class);</span>
-<span class="nc" id="L1109">		List&lt;Sport&gt;sp =query.getResultList();</span>
+<span class="nc" id="L1107">		Integer max=Integer.MIN_VALUE;</span>
+<span class="nc" id="L1108">		Sport s=null;</span>
+<span class="nc" id="L1109">		TypedQuery&lt;Sport&gt; query = db.createQuery(&quot;SELECT sp FROM Sport sp &quot;,Sport.class);</span>
+<span class="nc" id="L1110">		List&lt;Sport&gt;sp =query.getResultList();</span>
 		Integer kont;
-<span class="nc bnc" id="L1111" title="All 2 branches missed.">		for(Sport sport: sp) {</span>
-<span class="nc" id="L1112">			kont=sport.getApustuKantitatea();</span>
-<span class="nc bnc" id="L1113" title="All 2 branches missed.">			if(kont&gt;max) {</span>
-<span class="nc" id="L1114">				s=sport;</span>
-<span class="nc" id="L1115">				max=kont;</span>
+<span class="nc bnc" id="L1112" title="All 2 branches missed.">		for(Sport sport: sp) {</span>
+<span class="nc" id="L1113">			kont=sport.getApustuKantitatea();</span>
+<span class="nc bnc" id="L1114" title="All 2 branches missed.">			if(kont&gt;max) {</span>
+<span class="nc" id="L1115">				s=sport;</span>
+<span class="nc" id="L1116">				max=kont;</span>
 			}
-<span class="nc" id="L1117">		}</span>
-<span class="nc" id="L1118">		return s;</span>
+<span class="nc" id="L1118">		}</span>
+<span class="nc" id="L1119">		return s;</span>
 	}
 	
 	public void ezJarraituTaldea(Registered u) {
-<span class="nc" id="L1122">		Registered r = (Registered) db.find(Registered.class, u.getUsername()); </span>
-<span class="nc" id="L1123">		db.getTransaction().begin();</span>
-<span class="nc" id="L1124">		Team t = db.find(Team.class, r.getTaldea());</span>
-<span class="nc" id="L1125">		t.removeUser(r);</span>
-<span class="nc" id="L1126">		r.setTaldea(null);</span>
-<span class="nc" id="L1127">		db.getTransaction().commit();</span>
-<span class="nc" id="L1128">	}</span>
+<span class="nc" id="L1123">		Registered r = (Registered) db.find(Registered.class, u.getUsername()); </span>
+<span class="nc" id="L1124">		db.getTransaction().begin();</span>
+<span class="nc" id="L1125">		Team t = db.find(Team.class, r.getTaldea());</span>
+<span class="nc" id="L1126">		t.removeUser(r);</span>
+<span class="nc" id="L1127">		r.setTaldea(null);</span>
+<span class="nc" id="L1128">		db.getTransaction().commit();</span>
+<span class="nc" id="L1129">	}</span>
 	
 	public List&lt;Team&gt; getAllTeams() {	
-<span class="nc" id="L1131">		TypedQuery&lt;Team&gt; query = db.createQuery(&quot;SELECT t FROM Team t &quot;,Team.class);   </span>
-<span class="nc" id="L1132">		List&lt;Team&gt; teams = query.getResultList();</span>
-<span class="nc" id="L1133">	 	return teams;</span>
+<span class="nc" id="L1132">		TypedQuery&lt;Team&gt; query = db.createQuery(&quot;SELECT t FROM Team t &quot;,Team.class);   </span>
+<span class="nc" id="L1133">		List&lt;Team&gt; teams = query.getResultList();</span>
+<span class="nc" id="L1134">	 	return teams;</span>
 	}
 	
 	public void jarraituTaldea(Registered u, Team t) {
-<span class="nc" id="L1137">		Registered r = (Registered) db.find(Registered.class, u.getUsername());</span>
-<span class="nc" id="L1138">		Team team = db.find(Team.class, t.getIzena());</span>
-<span class="nc" id="L1139">		db.getTransaction().begin();</span>
-<span class="nc" id="L1140">		r.setTaldea(team);</span>
-<span class="nc" id="L1141">		team.addUser(r);</span>
-<span class="nc" id="L1142">		db.getTransaction().commit();</span>
-<span class="nc" id="L1143">	}</span>
+<span class="nc" id="L1138">		Registered r = (Registered) db.find(Registered.class, u.getUsername());</span>
+<span class="nc" id="L1139">		Team team = db.find(Team.class, t.getIzena());</span>
+<span class="nc" id="L1140">		db.getTransaction().begin();</span>
+<span class="nc" id="L1141">		r.setTaldea(team);</span>
+<span class="nc" id="L1142">		team.addUser(r);</span>
+<span class="nc" id="L1143">		db.getTransaction().commit();</span>
+<span class="nc" id="L1144">	}</span>
 	
 	public Registered findUser(Registered user){
-<span class="nc" id="L1146">		return db.find(Registered.class, user.getUsername());</span>
+<span class="nc" id="L1147">		return db.find(Registered.class, user.getUsername());</span>
 	}
 	
 	public List&lt;Event&gt; getEventsTeam(Team team) {
-<span class="nc" id="L1150">		Team t=db.find(Team.class, team.getIzena());</span>
-<span class="nc" id="L1151">		TypedQuery&lt;Event&gt; query = db.createQuery(&quot;SELECT ev FROM Event ev WHERE ev.getLokala().getIzena()=?1 OR ev.getKanpokoa().getIzena()=?2&quot;,Event.class);</span>
-<span class="nc" id="L1152">		query.setParameter(1, t.getIzena());</span>
-<span class="nc" id="L1153">		query.setParameter(2, t.getIzena());</span>
-<span class="nc" id="L1154">		return query.getResultList();</span>
+<span class="nc" id="L1151">		Team t=db.find(Team.class, team.getIzena());</span>
+<span class="nc" id="L1152">		TypedQuery&lt;Event&gt; query = db.createQuery(&quot;SELECT ev FROM Event ev WHERE ev.getLokala().getIzena()=?1 OR ev.getKanpokoa().getIzena()=?2&quot;,Event.class);</span>
+<span class="nc" id="L1153">		query.setParameter(1, t.getIzena());</span>
+<span class="nc" id="L1154">		query.setParameter(2, t.getIzena());</span>
+<span class="nc" id="L1155">		return query.getResultList();</span>
 		
 	}
 }

@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>is2</groupId>
 	<artifactId>is2</artifactId>
@@ -50,8 +52,12 @@
 	</repositories>
 
 	<properties>
-		<sonar.organization>jonanderjimenez</sonar.organization>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<sonar.organization> jonanderjimenez</sonar.organization>
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+		<sonar.projectKey>jonanderjimenez_probaproiektua</sonar.projectKey>
+		<sonar.login>3bc301f2eb2fa09bf4b699d22620768a48288097</sonar.login>
 	</properties>
 
 	<!-- https://mvnrepository.com/artifact/junit/junit -->
@@ -145,7 +151,7 @@
 			<scope>test</scope>
 		</dependency>
 
-		
+
 	</dependencies>
 
 </project>

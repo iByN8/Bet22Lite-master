@@ -1007,18 +1007,18 @@ is2,com.toedter.components,JSpinFieldBeanInfo,5,0,0,0,0,0,1,0,1,0
 is2,com.toedter.components,UTF8ResourceBundle.UTF8PropertyResourceBundle,35,0,2,0,0,0,4,0,3,0
 is2,com.toedter.components,JTitlePanel,98,0,4,0,0,0,4,0,2,0
 is2,com.toedter.components,GenericBeanInfo,106,0,11,0,0,0,9,0,2,0
-is2,domain,Apustua,65,15,6,0,22,7,14,2,11,2
+is2,domain,Apustua,38,42,5,1,12,17,8,8,5,8
 is2,domain,IntegerAdapter,14,0,2,0,4,0,4,0,3,0
-is2,domain,Transaction,58,15,0,0,18,6,12,1,12,1
-is2,domain,Sport,45,30,2,0,16,9,10,3,9,3
-is2,domain,Question,101,51,4,0,28,14,15,5,13,5
-is2,domain,Quote,120,23,10,0,34,8,20,2,15,2
+is2,domain,Transaction,55,18,0,0,16,8,11,2,11,2
+is2,domain,Sport,30,45,2,0,11,14,7,6,6,6
+is2,domain,Question,88,64,4,0,23,19,11,9,9,9
+is2,domain,Quote,103,40,10,0,29,13,16,6,11,6
 is2,domain,Jarraitzailea,45,0,0,0,19,0,10,0,10,0
 is2,domain,Team,33,35,0,0,13,9,8,3,8,3
-is2,domain,Registered,152,77,2,0,53,23,34,4,33,4
-is2,domain,Event,84,112,8,4,32,30,17,12,13,10
+is2,domain,Registered,149,80,2,0,51,25,33,5,32,5
+is2,domain,Event,78,118,8,4,30,32,15,14,11,12
 is2,domain,TeamRenderer,70,0,2,0,16,0,3,0,2,0
-is2,domain,ApustuAnitza,163,35,12,0,45,11,25,3,19,3
+is2,domain,ApustuAnitza,108,90,7,5,30,26,16,12,12,10
 is2,net.bytebuddy.implementation.bytecode.assign.reference,GenericTypeAwareAssigner,56,0,12,0,10,0,8,0,2,0
 is2,net.bytebuddy.implementation.bytecode.assign.reference,GenericTypeAwareAssigner.IsAssignableToVisitor.OfNonGenericType,23,0,2,0,5,0,3,0,2,0
 is2,net.bytebuddy.implementation.bytecode.assign.reference,GenericTypeAwareAssigner.IsAssignableToVisitor,166,0,22,0,25,0,20,0,9,0
@@ -1186,7 +1186,7 @@ is2,org.objenesis.instantiator.util,ClassDefinitionUtils,114,0,2,0,19,0,5,0,4,0
 is2,org.objenesis.instantiator.util,DefineClassHelper.Java8,81,0,4,0,16,0,5,0,3,0
 is2,org.objenesis.instantiator.util,ClassUtils,32,0,0,0,8,0,4,0,4,0
 is2,dataAccess,ObjectdbManagerServer,192,0,2,0,43,0,3,0,2,0
-is2,dataAccess,DataAccess,1689,2045,99,7,352,454,87,7,35,6
+is2,dataAccess,DataAccess,1406,2331,71,35,288,519,70,24,31,10
 is2,dataAccess,ObjectdbManagerServer.new ActionListener() {...},48,0,0,0,12,0,2,0,2,0
 is2,javax.transaction.xa,XAException,13,0,0,0,7,0,3,0,3,0
 is2,net.bytebuddy.description.method,ParameterList.ForLoadedExecutable.Dispatcher.ForLegacyVm,31,0,0,0,5,0,4,0,4,0
