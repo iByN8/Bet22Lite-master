@@ -27,7 +27,7 @@ public class GertaeraEzabatuDAW {
 		try {
 
 			// define paramaters
-
+ 
 			String eventText = "test";
 			String queryText = "query1";
 			Float betMinimum = new Float(2);

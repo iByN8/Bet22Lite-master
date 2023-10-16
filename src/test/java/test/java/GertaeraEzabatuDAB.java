@@ -39,7 +39,7 @@ public class GertaeraEzabatuDAB {
 		try {
 		
 			sut.gertaeraEzabatu(null);
-			fail();
+			fail(); 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			// if the program goes to this point fail

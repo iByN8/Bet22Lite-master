@@ -50,7 +50,7 @@ public class Event implements Serializable {
 		this.lokala=lokala;
 		this.kanpokoa=kanpokoa;
 	}
-	
+	 
 	public Event(String description,Date eventDate, Team lokala, Team kanpokoa) {
 		this.description = description;
 		this.eventDate=eventDate;

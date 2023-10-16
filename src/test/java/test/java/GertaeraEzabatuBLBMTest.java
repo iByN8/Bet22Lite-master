@@ -1,6 +1,7 @@
 package test.java;
 
 import static org.junit.Assert.*;
+
 import static org.mockito.Mockito.*;
 
 import java.text.ParseException;
@@ -27,6 +28,18 @@ import domain.Quote;
 import domain.Registered;
 import domain.Team;
 import exceptions.EventFinished;
+import static org.junit.Assert.*;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Vector;
+
+import org.junit.Test;
+
+import configuration.UtilDate;
+import dataAccess.DataAccess;
+import domain.Event;
+import test.dataAccess.TestDataAccess;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GertaeraEzabatuBLBMTest {
@@ -48,7 +61,7 @@ public class GertaeraEzabatuBLBMTest {
 		}
 	}
 
-	@Test
+	@Test  
 	public void test2() {
 		Team t1 = new Team("Barca");
 		Team t2 = new Team("Bai");
