@@ -179,7 +179,7 @@ public class GertaeraEzabatuBLBMTest {
 			fail();
 		}
 	}
-
+//a
 	@Test
 	public void test6() {
 		Registered u = new Registered("user", "w", 10);
