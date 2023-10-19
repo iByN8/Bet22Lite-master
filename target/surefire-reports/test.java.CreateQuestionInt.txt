@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: test.java.CreateQuestionInt
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.127 sec <<< FAILURE! - in test.java.CreateQuestionInt
-test1(test.java.CreateQuestionInt)  Time elapsed: 0.036 sec  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.132 sec <<< FAILURE! - in test.java.CreateQuestionInt
+test1(test.java.CreateQuestionInt)  Time elapsed: 0.034 sec  <<< ERROR!
 java.util.MissingResourceException: Can't find bundle for base name Etiquetas, locale es_ES
 	at test.java.CreateQuestionInt.test1(CreateQuestionInt.java:65)
 
-test2(test.java.CreateQuestionInt)  Time elapsed: 0.04 sec  <<< ERROR!
+test2(test.java.CreateQuestionInt)  Time elapsed: 0.033 sec  <<< ERROR!
 java.util.MissingResourceException: Can't find bundle for base name Etiquetas, locale es_ES
 	at test.java.CreateQuestionInt.test2(CreateQuestionInt.java:109)
 
