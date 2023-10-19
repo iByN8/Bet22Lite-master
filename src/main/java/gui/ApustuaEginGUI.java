@@ -11,6 +11,7 @@ import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -82,7 +83,7 @@ public class ApustuaEginGUI extends JFrame{
 	
 	private Double maxMinBet=0.0;
 	
-	private Vector<Quote> quoteVec = new Vector<Quote>();
+	private LinkedList<Quote> quoteVec = new LinkedList<Quote>();
 
 	private JLabel lblApustua;
 
@@ -227,7 +228,7 @@ public class ApustuaEginGUI extends JFrame{
 						if(zenb>=maxMinBet) {
 							Boolean b = businessLogic.ApustuaEgin(user, quoteVec, zenb, -1);
 							quoteList= new DefaultListModel<Quote>();
-							quoteVec= new Vector<Quote>();
+							quoteVec= new LinkedList<Quote>();
 							list.setModel(quoteList);
 							if(b) {
 								lblError.setVisible(true); 

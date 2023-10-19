@@ -58,8 +58,9 @@
 		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 		<sonar.projectKey>jonanderjimenez_probaproiektua</sonar.projectKey>
 		<sonar.login>3bc301f2eb2fa09bf4b699d22620768a48288097</sonar.login>
-	</properties>
-
+ 		<sonar.organization>ibyn8</sonar.organization>
+  		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+</properties>
 	<!-- https://mvnrepository.com/artifact/junit/junit -->
 	<dependencies>
 		<dependency>
