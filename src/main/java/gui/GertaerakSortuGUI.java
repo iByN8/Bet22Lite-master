@@ -32,7 +32,7 @@ import domain.Event;
 import exceptions.EventFinished;
 
 public class GertaerakSortuGUI extends JFrame{
-	
+	//gera
 	private BLFacade businessLogic = MainGUI.getBusinessLogic(); 
 	
 	private static final long serialVersionUID = 1L;
