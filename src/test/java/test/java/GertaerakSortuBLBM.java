@@ -7,6 +7,7 @@ import java.util.Date;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -74,10 +75,25 @@ public class GertaerakSortuBLBM {
 		   int year=today.get(Calendar.YEAR);
 		   if (month==12) { month=0; year+=1;}
         // ...
+		   ArgumentCaptor<String> descCaptor =
+				   ArgumentCaptor.forClass(String.class);
+				   ArgumentCaptor<Date> dataCaptor =
+				   ArgumentCaptor.forClass(Date.class);
+				   ArgumentCaptor<String> kirolaCaptor =
+				   ArgumentCaptor.forClass(String.class);
+		   
+		   String desc = "123-123";
+		   Date data = UtilDate.newDate(year,month,17);
+		   String kirola = "Futbol";
 		try {
+			Mockito.verify(dataAccess,Mockito.times(1))
+			.gertaerakSortu(descCaptor.capture(), dataCaptor.capture(), kirolaCaptor.capture());
 			Mockito.doReturn(true).when(dataAccess).gertaerakSortu(Mockito.anyString(), Mockito.any(Date.class), Mockito.anyString());
-			boolean b = sut.gertaerakSortu("muju5-muju7", UtilDate.newDate(year,month,17), "Futbol");
+			boolean b = sut.gertaerakSortu(desc, data, kirola);
 			assertTrue(b);
+			assertEquals(desc, descCaptor.getValue());
+			assertEquals(data, dataCaptor.getValue());
+			assertEquals(kirola, kirolaCaptor.getValue());
 		} catch (Exception e) {
 			fail();
 		}
@@ -95,10 +111,25 @@ public class GertaerakSortuBLBM {
 		   int year=today.get(Calendar.YEAR);
 		   if (month==12) { month=0; year+=1;}
         // ...
+		   ArgumentCaptor<String> descCaptor =
+				   ArgumentCaptor.forClass(String.class);
+				   ArgumentCaptor<Date> dataCaptor =
+				   ArgumentCaptor.forClass(Date.class);
+				   ArgumentCaptor<String> kirolaCaptor =
+				   ArgumentCaptor.forClass(String.class);
+		   
+		   String desc = "Atletico-Athletic";
+		   Date data = UtilDate.newDate(year,month,17);
+		   String kirola = "Futbol";
 		try {
+			Mockito.verify(dataAccess,Mockito.times(1))
+			.gertaerakSortu(descCaptor.capture(), dataCaptor.capture(), kirolaCaptor.capture());
 			Mockito.doReturn(false).when(dataAccess).gertaerakSortu(Mockito.anyString(), Mockito.any(Date.class), Mockito.anyString());
-			boolean b = sut.gertaerakSortu("muju5-muju7", UtilDate.newDate(year,month,17), "Futbol");
+			boolean b = sut.gertaerakSortu(desc, data, kirola);
 			assertFalse(b);
+			assertEquals(desc, descCaptor.getValue());
+			assertEquals(data, dataCaptor.getValue());
+			assertEquals(kirola, kirolaCaptor.getValue());
 		} catch (Exception e) {
 			fail();
 		}
