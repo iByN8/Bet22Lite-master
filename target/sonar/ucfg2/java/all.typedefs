@@ -5036,7 +5036,16 @@ HtranslatePattern(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)ujava.
 useDateFormatSymbols()2java.text.SimpleDateFormat#useDateFormatSymbols()Z|
 .zeroPaddingNumber(IIILjava/lang/StringBuffer;)Jjava.text.SimpleDateFormat#zeroPaddingNumber(IIILjava/lang/StringBuffer;)V
 
-XmlAdapterjava.lang.ObjectÅ
+XmlAdapterjava.lang.Objectë
+$dataAccess.DataAccessGertaeraEzabatujava.lang.Object:
+<init>().dataAccess.DataAccessGertaeraEzabatu#<init>()V<
+	<init>(Z)/dataAccess.DataAccessGertaeraEzabatu#<init>(Z)Vt
+%ApustuaIrabazi(Ldomain/ApustuAnitza;)KdataAccess.DataAccessGertaeraEzabatu#ApustuaIrabazi(Ldomain/ApustuAnitza;)Vš
+8apustuaEzabatu(Ldomain/Registered;Ldomain/ApustuAnitza;)^dataAccess.DataAccessGertaeraEzabatu#apustuaEzabatu(Ldomain/Registered;Ldomain/ApustuAnitza;)V8
+close()-dataAccess.DataAccessGertaeraEzabatu#close()Vh
+gertaeraEzabatu(Ldomain/Event;)EdataAccess.DataAccessGertaeraEzabatu#gertaeraEzabatu(Ldomain/Event;)ZF
+initializeDB()4dataAccess.DataAccessGertaeraEzabatu#initializeDB()V8
+open(Z)-dataAccess.DataAccessGertaeraEzabatu#open(Z)VÅ
 java.text.ParseExceptionjava.lang.ExceptionT
 <init>(Ljava/lang/String;I)5java.text.ParseException#<init>(Ljava/lang/String;I)V>
 getErrorOffset()*java.text.ParseException#getErrorOffset()I÷
