@@ -1,0 +1,15 @@
+test\java\CreateQuestionBLBMTest.class
+test\java\CreateQuestionDAB.class
+test\java\GertaeraEzabatuBLBMTest.class
+test\dataAccess\TestDataAccess.class
+test\java\GertaeraEzabatuDAW.class
+test\java\GertaerakSortuDAW.class
+test\java\EmaitzakIpiniBLBMTest.class
+test\java\CreateQuestionDAW.class
+test\java\GertaerakSortuBLBM.class
+test\java\GertaerakSortuDAB.class
+test\java\CreateQuestionInt.class
+test\java\EmaitzakIpiniDABTest.class
+test\java\EmaitzakIpiniDAWTest.class
+test\java\GertaeraEzabatuDAB.class
+test\businessLogic\TestFacadeImplementation.class
