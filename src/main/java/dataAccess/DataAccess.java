@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -825,7 +826,7 @@ public void open(boolean initializeMode){
 		db.getTransaction().commit();
 	}
 	
-	public boolean ApustuaEgin(Registered u, Vector<Quote> quote, Double balioa, Integer apustuBikoitzaGalarazi) {
+	public boolean ApustuaEgin(Registered u, LinkedList<Quote> quote, Double balioa, Integer apustuBikoitzaGalarazi) {
 		Registered user = (Registered) db.find(Registered.class, u.getUsername());
 		Boolean b;
 		if(user.getDirukop()>=balioa) {

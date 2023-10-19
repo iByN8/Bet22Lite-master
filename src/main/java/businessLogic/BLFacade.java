@@ -2,6 +2,7 @@ package businessLogic;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
@@ -80,7 +81,7 @@ public interface BLFacade  {
 	
 	@WebMethod public Collection<Quote> findQuote(Question question); 
 	
-	@WebMethod public boolean ApustuaEgin(Registered u, Vector<Quote> q, Double balioa, Integer apustuaGalarazi); 
+	@WebMethod public boolean ApustuaEgin(Registered u, LinkedList<Quote> q, Double balioa, Integer apustuaGalarazi); 
 	
 	@WebMethod public List<Apustua> findApustua(Registered u); 
 	

@@ -2,6 +2,7 @@ package businessLogic;
 import java.util.Collection;
 //hola
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -195,7 +196,7 @@ public class BLFacadeImplementation  implements BLFacade {
     	dbManager.close();
     }
     @WebMethod	
-    public boolean ApustuaEgin(Registered u, Vector<Quote> q, Double balioa, Integer apustuaGalarazi) {
+    public boolean ApustuaEgin(Registered u, LinkedList<Quote> q, Double balioa, Integer apustuaGalarazi) {
     	dbManager.open(false);
     	boolean b = dbManager.ApustuaEgin(u, q, balioa, apustuaGalarazi);
     	dbManager.close();
