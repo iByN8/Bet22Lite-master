@@ -12,7 +12,7 @@ public class TestFacadeImplementation {
  	
     
 	   public TestFacadeImplementation()  {
-			
+			//
 			System.out.println("Creating TestFacadeImplementation instance");
 			ConfigXML c=ConfigXML.getInstance();
 			dbManagerTest=new TestDataAccess(); 
