@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: test.java.GertaerakSortuDAB
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.032 sec <<< FAILURE! - in test.java.GertaerakSortuDAB
-test4(test.java.GertaerakSortuDAB)  Time elapsed: 0.001 sec  <<< FAILURE!
+Tests run: 5, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.036 sec <<< FAILURE! - in test.java.GertaerakSortuDAB
+test4(test.java.GertaerakSortuDAB)  Time elapsed: 0 sec  <<< FAILURE!
 java.lang.AssertionError
 	at test.java.GertaerakSortuDAB.test4(GertaerakSortuDAB.java:82)
 
-test5(test.java.GertaerakSortuDAB)  Time elapsed: 0 sec  <<< ERROR!
+test5(test.java.GertaerakSortuDAB)  Time elapsed: 0.001 sec  <<< ERROR!
 com.objectdb.o._PersistenceException: Attempt to begin a new transaction when a transaction is active [PMImpl]
 	at test.java.GertaerakSortuDAB.test5(GertaerakSortuDAB.java:101)
 Caused by: com.objectdb.o.UserException: Attempt to begin a new transaction when a transaction is active [PMImpl]

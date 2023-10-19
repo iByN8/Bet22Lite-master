@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: test.java.GertaeraEzabatuDAW
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.29 sec <<< FAILURE! - in test.java.GertaeraEzabatuDAW
-test5(test.java.GertaeraEzabatuDAW)  Time elapsed: 0.053 sec  <<< FAILURE!
+Tests run: 7, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.283 sec <<< FAILURE! - in test.java.GertaeraEzabatuDAW
+test5(test.java.GertaeraEzabatuDAW)  Time elapsed: 0.06 sec  <<< FAILURE!
 java.lang.AssertionError
 	at test.java.GertaeraEzabatuDAW.test5(GertaeraEzabatuDAW.java:210)
 
-test7(test.java.GertaeraEzabatuDAW)  Time elapsed: 0.05 sec  <<< FAILURE!
+test7(test.java.GertaeraEzabatuDAW)  Time elapsed: 0.046 sec  <<< FAILURE!
 java.lang.AssertionError
 	at test.java.GertaeraEzabatuDAW.test7(GertaeraEzabatuDAW.java:277)
 
