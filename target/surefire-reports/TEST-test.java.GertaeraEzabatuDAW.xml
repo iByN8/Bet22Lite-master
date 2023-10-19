@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="test.java.GertaeraEzabatuDAW" time="0.249" tests="7" errors="0" skipped="0" failures="2">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="test.java.GertaeraEzabatuDAW" time="0.275" tests="7" errors="0" skipped="0" failures="2">
   <properties>
     <property name="jansi.mode" value="force"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -26,7 +26,7 @@
     <property name="user.variant" value=""/>
     <property name="stderr.encoding" value="UTF-8"/>
     <property name="os.name" value="Windows 11"/>
-    <property name="classworlds.conf" value="C:\Users\jonan\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf12846667177058343816.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\jonan\eclipse-workspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf4257019091108677600.tmp"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
     <property name="stdout.encoding" value="UTF-8"/>
     <property name="java.library.path" value="C:\Users\jonan\.p2\pool\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.5.v20221102-0933\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:/Users/jonan/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_20.0.2.v20230801-2057/jre/bin/server;C:/Users/jonan/.p2/pool/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_20.0.2.v20230801-2057/jre/bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\GNAT\2021\bin;C:\Program Files\PuTTY\;C:\Users\jonan\AppData\Local\Microsoft\WindowsApps;C:\Users\jonan\AppData\Local\GitHubDesktop\bin;C:\WINDOWS\System32;;."/>
@@ -59,14 +59,14 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="java.vendor.version" value="Temurin-17.0.5+8"/>
-    <property name="m2e.build.project.data.socket.port" value="54086"/>
+    <property name="m2e.build.project.data.socket.port" value="54190"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase name="test1" classname="test.java.GertaeraEzabatuDAW" time="0.038"/>
-  <testcase name="test2" classname="test.java.GertaeraEzabatuDAW" time="0.018"/>
-  <testcase name="test3" classname="test.java.GertaeraEzabatuDAW" time="0.027"/>
-  <testcase name="test4" classname="test.java.GertaeraEzabatuDAW" time="0.027"/>
-  <testcase name="test5" classname="test.java.GertaeraEzabatuDAW" time="0.054">
+  <testcase name="test1" classname="test.java.GertaeraEzabatuDAW" time="0.043"/>
+  <testcase name="test2" classname="test.java.GertaeraEzabatuDAW" time="0.025"/>
+  <testcase name="test3" classname="test.java.GertaeraEzabatuDAW" time="0.03"/>
+  <testcase name="test4" classname="test.java.GertaeraEzabatuDAW" time="0.033"/>
+  <testcase name="test5" classname="test.java.GertaeraEzabatuDAW" time="0.053">
     <failure type="java.lang.AssertionError">java.lang.AssertionError
 	at test.java.GertaeraEzabatuDAW.test5(GertaeraEzabatuDAW.java:210)
 </failure>
@@ -77,8 +77,8 @@ Opening TestDataAccess instance
 >> DataAccessTest: removeEvent
 ]]></system-out>
   </testcase>
-  <testcase name="test6" classname="test.java.GertaeraEzabatuDAW" time="0.041"/>
-  <testcase name="test7" classname="test.java.GertaeraEzabatuDAW" time="0.043">
+  <testcase name="test6" classname="test.java.GertaeraEzabatuDAW" time="0.05"/>
+  <testcase name="test7" classname="test.java.GertaeraEzabatuDAW" time="0.041">
     <failure type="java.lang.AssertionError">java.lang.AssertionError
 	at test.java.GertaeraEzabatuDAW.test7(GertaeraEzabatuDAW.java:277)
 </failure>

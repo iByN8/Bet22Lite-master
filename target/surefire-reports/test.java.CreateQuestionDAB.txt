@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: test.java.CreateQuestionDAB
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.719 sec <<< FAILURE! - in test.java.CreateQuestionDAB
-test2(test.java.CreateQuestionDAB)  Time elapsed: 0.006 sec  <<< ERROR!
+Tests run: 3, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.722 sec <<< FAILURE! - in test.java.CreateQuestionDAB
+test2(test.java.CreateQuestionDAB)  Time elapsed: 0.005 sec  <<< ERROR!
 java.lang.NullPointerException: Cannot invoke "domain.Event.getEventNumber()" because "event" is null
 	at test.java.CreateQuestionDAB.test2(CreateQuestionDAB.java:104)
 
-test3(test.java.CreateQuestionDAB)  Time elapsed: 0.029 sec  <<< ERROR!
+test3(test.java.CreateQuestionDAB)  Time elapsed: 0.028 sec  <<< ERROR!
 java.lang.NullPointerException: Cannot read field "value" because "anotherString" is null
 	at test.java.CreateQuestionDAB.test3(CreateQuestionDAB.java:142)
 

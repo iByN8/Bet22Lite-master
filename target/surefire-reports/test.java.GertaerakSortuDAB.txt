@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: test.java.GertaerakSortuDAB
 -------------------------------------------------------------------------------
-Tests run: 5, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.025 sec <<< FAILURE! - in test.java.GertaerakSortuDAB
-test4(test.java.GertaerakSortuDAB)  Time elapsed: 0.001 sec  <<< FAILURE!
+Tests run: 5, Failures: 1, Errors: 1, Skipped: 0, Time elapsed: 0.028 sec <<< FAILURE! - in test.java.GertaerakSortuDAB
+test4(test.java.GertaerakSortuDAB)  Time elapsed: 0 sec  <<< FAILURE!
 java.lang.AssertionError
 	at test.java.GertaerakSortuDAB.test4(GertaerakSortuDAB.java:82)
 
