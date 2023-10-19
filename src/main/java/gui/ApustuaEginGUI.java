@@ -59,7 +59,7 @@ public class ApustuaEginGUI extends JFrame{
 	private JScrollPane scrollPaneEvents = new JScrollPane();
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	
-	private ArrayList<Date> datesWithEventsCurrentMonth = new ArrayList<Date>();
+	private Vector<Date> datesWithEventsCurrentMonth = new Vector<Date>();
 	private final JLabel jLabelQuestion = new JLabel(); //$NON-NLS-1$ //$NON-NLS-2$
 	private final JComboBox<Question> jComboBoxQuestions = new JComboBox<Question>();
 	DefaultComboBoxModel<Question> modelQuestions = new DefaultComboBoxModel<Question>();
@@ -430,7 +430,7 @@ public class ApustuaEginGUI extends JFrame{
 	}
 
 	
-public static void paintDaysWithEvents(JCalendar jCalendar,ArrayList<Date> datesWithEventsCurrentMonth) {
+public static void paintDaysWithEvents(JCalendar jCalendar,Vector<Date> datesWithEventsCurrentMonth) {
 		// For each day with events in current month, the background color for that day is changed.
 
 		

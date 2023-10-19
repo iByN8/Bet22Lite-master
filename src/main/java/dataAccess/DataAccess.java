@@ -657,9 +657,9 @@ public class DataAccess  {
 	 * @param date of the month for which days with events want to be retrieved 
 	 * @return collection of dates
 	 */
-	public ArrayList<Date> getEventsMonth(Date date) {
+	public Vector<Date> getEventsMonth(Date date) {
 		System.out.println(">> DataAccess: getEventsMonth");
-		ArrayList<Date> res = new ArrayList<Date>();	
+		Vector<Date> res = new Vector<Date>();	
 		
 		Date firstDayMonthDate= UtilDate.firstDayMonth(date);
 		Date lastDayMonthDate= UtilDate.lastDayMonth(date);
