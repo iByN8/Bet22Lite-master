@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: test.java.GertaeraEzabatuDAB
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.282 sec <<< FAILURE! - in test.java.GertaeraEzabatuDAB
-test6(test.java.GertaeraEzabatuDAB)  Time elapsed: 0.057 sec  <<< FAILURE!
+Tests run: 6, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.359 sec <<< FAILURE! - in test.java.GertaeraEzabatuDAB
+test6(test.java.GertaeraEzabatuDAB)  Time elapsed: 0.073 sec  <<< FAILURE!
 java.lang.AssertionError
 	at test.java.GertaeraEzabatuDAB.test6(GertaeraEzabatuDAB.java:219)
 
