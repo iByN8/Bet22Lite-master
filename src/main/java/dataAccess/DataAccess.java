@@ -222,9 +222,7 @@ public class DataAccess  {
 			Registered reg4 = new Registered("mikel", "123", 1111);
 									
 			if (Locale.getDefault().equals(new Locale("es"))) {
-				
 				String s = "¿Quién ganará el partido?";
-				
 				q1=ev1.addQuestion(s,1);
 				q2=ev1.addQuestion("¿Quién meterá el primer gol?",2);
 				q3=ev11.addQuestion(s,1);
@@ -233,21 +231,22 @@ public class DataAccess  {
 				q6=ev17.addQuestion("¿Habrá goles en la primera parte?",2);
 				
 			}
-			else if (Locale.getDefault().equals(new Locale("en"))) {
-				q1=ev1.addQuestion("Who will win the match?",1);
+			else if (Locale.getDefault().equals(new Locale("en"))) {				
+				String s = "Who will win the match?";				
+				q1=ev1.addQuestion(s,1);
 				q2=ev1.addQuestion("Who will score first?",2);
-				q3=ev11.addQuestion("Who will win the match?",1);
+				q3=ev11.addQuestion(s,1);
 				q4=ev11.addQuestion("How many goals will be scored in the match?",2);
-				q5=ev17.addQuestion("Who will win the match?",1);
+				q5=ev17.addQuestion(s,1);
 				q6=ev17.addQuestion("Will there be goals in the first half?",2);
-				
 			}			
-			else {
-				q1=ev1.addQuestion("Zeinek irabaziko du partidua?",1);
+			else {				
+				String s = "Zeinek irabaziko du partidua?";				
+				q1=ev1.addQuestion(s,1);
 				q2=ev1.addQuestion("Zeinek sartuko du lehenengo gola?",2);
-				q3=ev11.addQuestion("Zeinek irabaziko du partidua?",1);
+				q3=ev11.addQuestion(s,1);
 				q4=ev11.addQuestion("Zenbat gol sartuko dira?",2);
-				q5=ev17.addQuestion("Zeinek irabaziko du partidua?",1);
+				q5=ev17.addQuestion(s,1);
 				q6=ev17.addQuestion("Golak sartuko dira lehenengo zatian?",2);
 				 
 				
@@ -369,19 +368,19 @@ public class DataAccess  {
 			
 			
 			
+			String apustuEgin = "ApustuaEgin";
 			
-			
-			Transaction t1 = new Transaction(reg1, apA1.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t3 = new Transaction(reg2, apA4.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t4 = new Transaction(reg3, apA5.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t5 = new Transaction(reg4, apA3.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t6 = new Transaction(reg4, apA6.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t7 = new Transaction(reg1, apA7.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t8 = new Transaction(reg1, apA8.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t9 = new Transaction(reg2, apA9.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t10 = new Transaction(reg2, apA10.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t11 = new Transaction(reg3, apA11.getBalioa(), new Date(), "ApustuaEgin");
-			Transaction t12 = new Transaction(reg3, apA12.getBalioa(), new Date(), "ApustuaEgin");
+			Transaction t1 = new Transaction(reg1, apA1.getBalioa(), new Date(), apustuEgin );
+			Transaction t3 = new Transaction(reg2, apA4.getBalioa(), new Date(), apustuEgin);
+			Transaction t4 = new Transaction(reg3, apA5.getBalioa(), new Date(), apustuEgin);
+			Transaction t5 = new Transaction(reg4, apA3.getBalioa(), new Date(), apustuEgin);
+			Transaction t6 = new Transaction(reg4, apA6.getBalioa(), new Date(), apustuEgin);
+			Transaction t7 = new Transaction(reg1, apA7.getBalioa(), new Date(), apustuEgin);
+			Transaction t8 = new Transaction(reg1, apA8.getBalioa(), new Date(), apustuEgin);
+			Transaction t9 = new Transaction(reg2, apA9.getBalioa(), new Date(), apustuEgin);
+			Transaction t10 = new Transaction(reg2, apA10.getBalioa(), new Date(), apustuEgin);
+			Transaction t11 = new Transaction(reg3, apA11.getBalioa(), new Date(), apustuEgin);
+			Transaction t12 = new Transaction(reg3, apA12.getBalioa(), new Date(), apustuEgin);
 			
 			reg1.addTransaction(t1);
 			reg2.addTransaction(t3);
@@ -597,10 +596,11 @@ public class DataAccess  {
 			
 			db.getTransaction().commit();
 			
-			this.DiruaSartu(reg1, 50.0, new Date(), "DiruaSartu");
-			this.DiruaSartu(reg2, 50.0, new Date(), "DiruaSartu");
-			this.DiruaSartu(reg3, 50.0, new Date(), "DiruaSartu");
-			this.DiruaSartu(reg4, 50.0, new Date(), "DiruaSartu");
+			String diruaSartu = "DiruaSartu";
+			this.DiruaSartu(reg1, 50.0, new Date(), diruaSartu);
+			this.DiruaSartu(reg2, 50.0, new Date(), diruaSartu);
+			this.DiruaSartu(reg3, 50.0, new Date(), diruaSartu);
+			this.DiruaSartu(reg4, 50.0, new Date(), diruaSartu);
 			
 			System.out.println("Db initialized");
 		}
