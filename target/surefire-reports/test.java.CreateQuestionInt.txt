@@ -1,12 +1,12 @@
 -------------------------------------------------------------------------------
 Test set: test.java.CreateQuestionInt
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.231 sec <<< FAILURE! - in test.java.CreateQuestionInt
-test1(test.java.CreateQuestionInt)  Time elapsed: 0.06 sec  <<< FAILURE!
+Tests run: 2, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.292 sec <<< FAILURE! - in test.java.CreateQuestionInt
+test1(test.java.CreateQuestionInt)  Time elapsed: 0.081 sec  <<< FAILURE!
 java.lang.AssertionError
 	at test.java.CreateQuestionInt.test1(CreateQuestionInt.java:76)
 
-test2(test.java.CreateQuestionInt)  Time elapsed: 0.06 sec  <<< FAILURE!
+test2(test.java.CreateQuestionInt)  Time elapsed: 0.07 sec  <<< FAILURE!
 java.lang.AssertionError
 	at test.java.CreateQuestionInt.test2(CreateQuestionInt.java:124)
 

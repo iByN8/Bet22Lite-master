@@ -222,11 +222,14 @@ public class DataAccess  {
 			Registered reg4 = new Registered("mikel", "123", 1111);
 									
 			if (Locale.getDefault().equals(new Locale("es"))) {
-				q1=ev1.addQuestion("¿Quién ganará el partido?",1);
+				
+				String s = "¿Quién ganará el partido?";
+				
+				q1=ev1.addQuestion(s,1);
 				q2=ev1.addQuestion("¿Quién meterá el primer gol?",2);
-				q3=ev11.addQuestion("¿Quién ganará el partido?",1);
+				q3=ev11.addQuestion(s,1);
 				q4=ev11.addQuestion("¿Cuántos goles se marcarán?",2);
-				q5=ev17.addQuestion("¿Quién ganará el partido?",1);
+				q5=ev17.addQuestion(s,1);
 				q6=ev17.addQuestion("¿Habrá goles en la primera parte?",2);
 				
 			}
