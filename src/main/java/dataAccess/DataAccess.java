@@ -856,8 +856,7 @@ public void open(boolean initializeMode){
 				Apustua apu = db.find(Apustua.class, a.getApostuaNumber());
 				Quote q = db.find(Quote.class, apu.getKuota().getQuoteNumber());
 				Sport spo =q.getQuestion().getEvent().getSport();
-				spo.setApustuKantitatea(spo.getApustuKantitatea()+1);
-				
+				spo.setApustuKantitatea(spo.getApustuKantitatea()+1);	
 			}
 			user.addTransaction(t);
 			db.persist(t);
@@ -882,7 +881,6 @@ public void open(boolean initializeMode){
 		}else{
 			return false; 
 		}
-		
 	}
 	
 	public void apustuaEzabatu(Registered user1, ApustuAnitza ap) {
