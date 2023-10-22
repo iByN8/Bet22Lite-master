@@ -251,10 +251,15 @@ public class DataAccess {
 				q6 = ev17.addQuestion("Golak sartuko dira lehenengo zatian?", 2);
 
 			}
-			q7 = ev21.addQuestion("Emaitza?", 1);
-			q8 = ev21.addQuestion("Emaitza?", 1);
-			q9 = ev22.addQuestion("Irabazlea?", 1.5);
-			q10 = ev26.addQuestion("Irabazlea?", 1.5);
+			
+			String emaitza = "Emaitza?";
+			String irabazlea = "Irabazlea?";
+			
+			q7 = ev21.addQuestion(emaitza, 1);
+			q8 = ev21.addQuestion(emaitza, 1);
+			q9 = ev22.addQuestion(irabazlea, 1.5);
+			q10 = ev26.addQuestion(irabazlea, 1.5);
+			
 			q11 = ev27.addQuestion("Zeinek irabaziko du lehenengo set-a", 3.0);
 
 			Quote quote1 = q1.addQuote(1.3, "1", q1);
@@ -921,22 +926,31 @@ public class DataAccess {
 
 		for (Jarraitzailea reg : user.getJarraitzaileLista()) {
 			Jarraitzailea erab = db.find(Jarraitzailea.class, reg.getJarraitzaileaNumber());
-			boolean b = true;
-			for (ApustuAnitza apu : erab.getNork().getApustuAnitzak()) {
-				if (apu.getApustuKopia() == apustuAnitza.getApustuKopia()) {
-					b = false;
-				}
-			}
+			boolean b = apustuAnitzaErab(erab,apustuAnitza);
 			if (b) {
-				if (erab.getNork().getDiruLimitea() < balioa) {
-					this.ApustuaEgin(erab.getNork(), quote, erab.getNork().getDiruLimitea(), apustuBikoitzaGalarazi);
-				} else {
-					this.ApustuaEgin(erab.getNork(), quote, balioa, apustuBikoitzaGalarazi);
-				}
+				apustuaEginGS(erab, quote, balioa, apustuBikoitzaGalarazi);
 			}
 		}
 	}
-
+	
+	public boolean apustuAnitzaErab(Jarraitzailea erab,ApustuAnitza apustuAnitza) {
+		for (ApustuAnitza apu : erab.getNork().getApustuAnitzak()) {
+			if (apu.getApustuKopia() == apustuAnitza.getApustuKopia()) {
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public void apustuaEginGS(Jarraitzailea erab, LinkedList<Quote> quote,
+			Double balioa, Integer apustuBikoitzaGalarazi) {
+		if (erab.getNork().getDiruLimitea() < balioa) {
+			this.ApustuaEgin(erab.getNork(), quote, erab.getNork().getDiruLimitea(), apustuBikoitzaGalarazi);
+		} else {
+			this.ApustuaEgin(erab.getNork(), quote, balioa, apustuBikoitzaGalarazi);
+		}
+	}
+	
 	public void apustuaEzabatu(Registered user1, ApustuAnitza ap) {
 		Registered user = (Registered) db.find(Registered.class, user1.getUsername());
 		ApustuAnitza apustuAnitza = db.find(ApustuAnitza.class, ap.getApustuAnitzaNumber());
@@ -992,6 +1006,10 @@ public class DataAccess {
 		ApustuAnitza apustuAnitza = db.find(ApustuAnitza.class, apustua.getApustuAnitzaNumber());
 		Registered reg = (Registered) apustuAnitza.getUser();
 		Registered r = (Registered) db.find(Registered.class, reg.getUsername());
+		apustuaIrabaziGS(r,apustuAnitza);
+	}
+
+	public void apustuaIrabaziGS(Registered r, ApustuAnitza apustuAnitza) {
 		db.getTransaction().begin();
 		apustuAnitza.setEgoera("irabazita");
 		Double d = apustuAnitza.getBalioa();
@@ -1005,7 +1023,7 @@ public class DataAccess {
 		db.persist(t);
 		db.getTransaction().commit();
 	}
-
+	
 	public void EmaitzakIpini(Quote quote, Date currentDate) throws EventNotFinished {
 		Quote q = db.find(Quote.class, quote);
 		String result = q.getForecast();
