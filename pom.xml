@@ -59,6 +59,7 @@
 		<sonar.projectKey>jonanderjimenez_probaproiektua</sonar.projectKey>
 		<sonar.login>910884bdbdfa823e0de0e0d9be3a75e2f2803957</sonar.login>
 	</properties>
+
 	<!-- https://mvnrepository.com/artifact/junit/junit -->
 	<dependencies>
 		<dependency>

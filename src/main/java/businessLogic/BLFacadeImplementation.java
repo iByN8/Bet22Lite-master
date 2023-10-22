@@ -1,4 +1,5 @@
 package businessLogic;
+
 import java.util.Collection;
 //hola
 import java.util.Date;
@@ -37,8 +38,8 @@ public class BLFacadeImplementation  implements BLFacade {
 		System.out.println("Creating BLFacadeImplementation instance");
 		ConfigXML c=ConfigXML.getInstance();
 		
-		if (c.getDataBaseOpenMode().equals("initialize")) {
-		    dbManager=new DataAccess(c.getDataBaseOpenMode().equals("initialize"));
+		if (dataBaseIsInitialize(c)) {
+		    dbManager=new DataAccess(dataBaseIsInitialize(c));
 		    dbManager.initializeDB();
 		    } else
 		     dbManager=new DataAccess();
@@ -46,19 +47,24 @@ public class BLFacadeImplementation  implements BLFacade {
 
 		
 	}
+
+	
 	
     public BLFacadeImplementation(DataAccess da)  {
 		
 		System.out.println("Creating BLFacadeImplementation instance with DataAccess parameter");
 		ConfigXML c=ConfigXML.getInstance();
 		
-		if (c.getDataBaseOpenMode().equals("initialize")) {
+		if (dataBaseIsInitialize(c)) {
 			da.open(true);
 			da.initializeDB();			
 			da.close();
 
 		}
 		dbManager=da;
+	}
+    private boolean dataBaseIsInitialize(ConfigXML c) {
+		return c.getDataBaseOpenMode().equals("initialize");
 	}
 	
 

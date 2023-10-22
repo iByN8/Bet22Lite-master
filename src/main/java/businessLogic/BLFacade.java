@@ -1,5 +1,6 @@
 package businessLogic;
 
+
 import java.util.Collection;
 import java.util.Date;
 import java.util.LinkedList;
@@ -29,7 +30,7 @@ import exceptions.QuoteAlreadyExist;
  */
 @WebService
 public interface BLFacade  {
-	  
+	  //ahabha
 
 	/**
 	 * This method creates a question for an event, with a question text and the minimum bet
