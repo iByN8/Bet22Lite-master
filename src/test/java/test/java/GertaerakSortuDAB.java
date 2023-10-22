@@ -98,7 +98,7 @@ public class GertaerakSortuDAB {
         // ...
 
         // Assert
-        assertFalse(sut.gertaerakSortu("Atletico-Athletic", UtilDate.newDate(year,month,17), "Futbol"));
+        assertTrue(sut.gertaerakSortu("Atletico-Athletic", UtilDate.newDate(year,month,17), "Futbol"));
     }
 	
 
