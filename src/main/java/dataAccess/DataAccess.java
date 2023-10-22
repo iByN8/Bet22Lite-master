@@ -736,25 +736,39 @@ public void open(boolean initializeMode){
 		db.getTransaction().begin();
 		Sport spo =db.find(Sport.class, sport);
 		if(spo!=null) {
-			TypedQuery<Event> Equery = db.createQuery("SELECT e FROM Event e WHERE e.getEventDate() =?1 ",Event.class);
-			Equery.setParameter(1, eventDate);
-			for(Event ev: Equery.getResultList()) {
-				if(ev.getDescription().equals(description)) {
-					b = false;
-				}
-			}
+			b = eventDescriptionGS(description, eventDate, b);
 			if(b) {
-				String[] taldeak = description.split("-");
-				Team lokala = new Team(taldeak[0]);
-				Team kanpokoa = new Team(taldeak[1]);
-				Event e = new Event(description, eventDate, lokala, kanpokoa);
-				e.setSport(spo);
-				spo.addEvent(e);
-				db.persist(e);
+				gertaeraDataBaseanSartuGS(description, eventDate, spo);
 			}
 		}else {
 			db.getTransaction().commit();
 			return false;
+		}
+		db.getTransaction().commit();
+		return b;
+	}
+
+	public void gertaeraDataBaseanSartuGS(String description, Date eventDate, Sport sport) {
+		db.getTransaction().begin();
+		Sport spo =db.find(Sport.class, sport);
+		String[] taldeak = description.split("-");
+		Team lokala = new Team(taldeak[0]);
+		Team kanpokoa = new Team(taldeak[1]);
+		Event e = new Event(description, eventDate, lokala, kanpokoa);
+		e.setSport(spo);
+		spo.addEvent(e);
+		db.persist(e);
+		db.getTransaction().commit();
+	}
+
+	public boolean eventDescriptionGS(String description, Date eventDate, boolean b) {
+		db.getTransaction().begin();
+		TypedQuery<Event> Equery = db.createQuery("SELECT e FROM Event e WHERE e.getEventDate() =?1 ",Event.class);
+		Equery.setParameter(1, eventDate);
+		for(Event ev: Equery.getResultList()) {
+			if(ev.getDescription().equals(description)) {
+				b = false;
+			}
 		}
 		db.getTransaction().commit();
 		return b;
@@ -912,13 +926,20 @@ public void open(boolean initializeMode){
 		user.addTransaction(t);
 		db.persist(t);
 		user.removeApustua(apustuAnitza);
+		apustuAnitzaBerritu(apustuAnitza);
+		db.remove(apustuAnitza);
+		db.getTransaction().commit();
+	}
+
+	public void apustuAnitzaBerritu(ApustuAnitza ap) {
+		ApustuAnitza apustuAnitza = db.find(ApustuAnitza.class, ap.getApustuAnitzaNumber());
+		db.getTransaction().begin();
 		int i;
 		for(i=0; i<apustuAnitza.getApustuak().size(); i++) {
 			apustuAnitza.getApustuak().get(i).getKuota().removeApustua(apustuAnitza.getApustuak().get(i));
 			Sport spo =apustuAnitza.getApustuak().get(i).getKuota().getQuestion().getEvent().getSport();
 			spo.setApustuKantitatea(spo.getApustuKantitatea()-1);
 		}
-		db.remove(apustuAnitza);
 		db.getTransaction().commit();
 	}
 	
