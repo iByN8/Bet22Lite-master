@@ -36,7 +36,7 @@ public class EmaitzakIpiniDABTest {
 		try {
 			//invoke System Under Test (sut)
 			Quote qu = null;
-			sut.EmaitzakIpini(qu);
+			sut.EmaitzakIpini(qu, new Date());
 			
 		   } catch (Exception e) {
 			   assertTrue(true);
@@ -51,7 +51,7 @@ public class EmaitzakIpiniDABTest {
 					
 				Quote qu = new Quote();
 				//invoke System Under Test (sut)  
-				sut.EmaitzakIpini(qu);
+				sut.EmaitzakIpini(qu, new Date());
 				
 			   } catch (Exception e) {
 				   assertTrue(true);	
@@ -88,7 +88,7 @@ public class EmaitzakIpiniDABTest {
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
-			sut.EmaitzakIpini(q);
+			sut.EmaitzakIpini(q, new Date());
 			
 		   } catch (EventNotFinished e) {
 			   assertTrue(true);
@@ -126,7 +126,7 @@ public class EmaitzakIpiniDABTest {
 			testDA.close();			
 			
 			//invoke System Under Test (sut)  
-			sut.EmaitzakIpini(q);
+			sut.EmaitzakIpini(q, new Date());
 			assertTrue(true);
 			
 		   } catch (EventNotFinished e) {

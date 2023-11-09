@@ -31,7 +31,7 @@ public class EmaitzakIpiniBLBMTest {
 		try {
 			//invoke System Under Test (sut)
 			Quote qu = null;
-			MockDB.EmaitzakIpini(qu);
+			MockDB.EmaitzakIpini(qu, new Date());
 			
 		   } catch (Exception e) {
 			   assertTrue(true);
@@ -46,7 +46,7 @@ public class EmaitzakIpiniBLBMTest {
 					
 				Quote qu = new Quote();
 				//invoke System Under Test (sut)  
-				MockDB.EmaitzakIpini(qu);
+				MockDB.EmaitzakIpini(qu, new Date());
 				
 			   } catch (Exception e) {
 				   assertTrue(true);	
@@ -77,7 +77,7 @@ public class EmaitzakIpiniBLBMTest {
 			Mockito.doReturn(oneDate).when(q.getQuestion().getEvent().getEventDate());
 			
 			//invoke System Under Test (sut)  
-			MockDB.EmaitzakIpini(q);
+			MockDB.EmaitzakIpini(q, new Date());
 			fail();
 			
 		   } catch (EventNotFinished e) {
@@ -123,7 +123,7 @@ public class EmaitzakIpiniBLBMTest {
 			Mockito.doReturn(qu).when(q.getQuestion());
 			
 			//invoke System Under Test (sut)  
-			MockDB.EmaitzakIpini(q);
+			MockDB.EmaitzakIpini(q, new Date());
 			assertTrue(true);
 			
 		   } catch (EventNotFinished e) {
