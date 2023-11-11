@@ -108,7 +108,7 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager.open(false);
 		Vector<Event>  events=dbManager.getEvents(date);
 		dbManager.close();
-		return events;
+		return (ExtendedIterator<Event>) events;
 	}
 
     
