@@ -22,16 +22,17 @@ public class UserAdapter extends AbstractTableModel{
 
     public Object getValueAt(int row, int col) {
         ApustuAnitza ap = apustuList.get(row);
+       
 
         switch (col) {
             case 0:
-                return ap.get;
+                return 0;
             case 1:
-                return user.(); 
+                return 1; 
             case 2:
-            	return user.();
+            	return 2;
             case 3:
-            	return user.();
+            	return 3;
             default:
                 return null;
         }

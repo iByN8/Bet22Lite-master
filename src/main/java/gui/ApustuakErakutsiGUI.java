@@ -19,7 +19,7 @@ public class ApustuakErakutsiGUI extends JFrame {
 	    private UserAdapter userAdapter;
 
 	    public ApustuakErakutsiGUI(List<ApustuAnitza> listaUsuarios) {
-	        // Configurar la ventana
+	    	
 	        setTitle("Egindako apustuak:");
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	        setSize(500, 300);
