@@ -40,6 +40,7 @@ import domain.Registered;
 import exceptions.ApustuaAlreadyExist;
 import exceptions.EventFinished;
 import iterator.ExtendedIterator;
+import iterator.ExtendedIteratorEvents;
 
 import java.awt.Font;
 
@@ -390,9 +391,9 @@ public class ApustuaEginGUI extends JFrame {
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						ExtendedIterator events = facade.getEvents(firstDay);
+						ExtendedIteratorEvents events = (ExtendedIteratorEvents) facade.getEvents(firstDay);
 
-						if (events.hasNext()) {
+						if (events.getEvents().isEmpty()) {
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
 									+ ": " + dateformat1.format(calendarAct.getTime()));
 							System.out.println("no events");
@@ -404,12 +405,12 @@ public class ApustuaEginGUI extends JFrame {
 						jComboBoxEvents.removeAllItems();
 						System.out.println("Events " + events);
 
-						for (domain.Event ev : events) {
+						for (domain.Event ev : events.getEvents()) {
 							modelEvents.addElement(ev);
 						}
 						jComboBoxEvents.repaint();
 
-						if (events.size() == 0) {
+						if (events.hasNext()) {
 							btnApustuaGehitu.setEnabled(false);
 						} else {
 

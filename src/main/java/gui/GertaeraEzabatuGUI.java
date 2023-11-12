@@ -28,6 +28,8 @@ import businessLogic.BLFacade;
 import configuration.UtilDate;
 import domain.Apustua;
 import domain.Event;
+import iterator.ExtendedIteratorEvents;
+
 import javax.swing.SwingConstants;
 
 public class GertaeraEzabatuGUI extends JFrame{
@@ -117,7 +119,7 @@ public class GertaeraEzabatuGUI extends JFrame{
 				boolean b = businessLogic.gertaeraEzabatu(event); 
 				
 				modelEvents.removeAllElements();
-				for(Event a : businessLogic.getEvents(event.getEventDate())){
+				for(Event a :(Vector<domain.Event> ) businessLogic.getEvents(event.getEventDate())){
 					modelEvents.addElement(a); 
 				}
 				
@@ -183,9 +185,9 @@ public class GertaeraEzabatuGUI extends JFrame{
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						Vector<domain.Event> events = facade.getEvents(firstDay);
+						ExtendedIteratorEvents events =(ExtendedIteratorEvents ) facade.getEvents(firstDay);
 
-						if (events.isEmpty())
+						if (events.getEvents().isEmpty())
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
 									+ ": " + dateformat1.format(calendarAct.getTime()));
 						else
@@ -194,11 +196,11 @@ public class GertaeraEzabatuGUI extends JFrame{
 						jComboBoxEvents.removeAllItems();
 						System.out.println("Events " + events);
 
-						for (domain.Event ev : events)
+						for (domain.Event ev : events.getEvents())
 							modelEvents.addElement(ev);
 						jComboBoxEvents.repaint();
 
-						if (events.size() == 0)
+						if (events.hasNext())
 							jButtonEzabatu.setEnabled(false);
 						else
 							jButtonEzabatu.setEnabled(true);

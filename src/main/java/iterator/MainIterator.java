@@ -24,13 +24,16 @@ public class MainIterator {
             month = 0;
             year += 1;
         }
+       
         ExtendedIterator i = facadeInterface.getEvents(UtilDate.newDate(year, month, 17));
         Event ev;
         i.goLast();
+        System.out.println("--------------------------------------------------");
         while (i.hasPrevious()) {
             ev = (Event) i.previous();
             System.out.println(ev.toString());
         }
+        System.out.println("----------------ORAIN HASIERATIK HASITA----------------");
         i.goFirst();
         while (i.hasNext()) {
             ev = (Event) i.next();
