@@ -2,7 +2,6 @@ package gui;
 
 import businessLogic.BLFacade;
 
-interface BLFacadeFactory {
-    BLFacade createBLFacade();
+public interface BLFacadeFactory {
+	public BLFacade createBLFacade();
 }
-

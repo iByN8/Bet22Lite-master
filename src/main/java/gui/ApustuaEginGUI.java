@@ -31,7 +31,6 @@ import javax.swing.SwingConstants;
 import com.toedter.calendar.JCalendar;
 
 import businessLogic.BLFacade;
-import businessLogic.ExtendedIterator;
 import configuration.UtilDate;
 import domain.Event;
 import domain.Question;
@@ -40,6 +39,8 @@ import domain.Transaction;
 import domain.Registered;
 import exceptions.ApustuaAlreadyExist;
 import exceptions.EventFinished;
+import iterator.ExtendedIterator;
+
 import java.awt.Font;
 
 public class ApustuaEginGUI extends JFrame {
@@ -389,7 +390,7 @@ public class ApustuaEginGUI extends JFrame {
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						ExtendedIterator<Event> events = facade.getEvents(firstDay);
+						ExtendedIterator events = facade.getEvents(firstDay);
 
 						if (events.hasNext()) {
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
