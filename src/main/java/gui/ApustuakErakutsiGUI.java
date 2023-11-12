@@ -8,6 +8,7 @@ import javax.swing.JTable;
 import businessLogic.BLFacadeImplementation;
 import domain.Registered;
 import domain.UserAdapter;
+import domain.ApustuAnitza;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class ApustuakErakutsiGUI extends JFrame {
 	  private JTable userTable;
 	    private UserAdapter userAdapter;
 
-	    public ApustuakErakutsiGUI(List<Registered> listaUsuarios) {
+	    public ApustuakErakutsiGUI(List<ApustuAnitza> listaUsuarios) {
 	        // Configurar la ventana
 	        setTitle("Egindako apustuak:");
 	        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,17 +31,6 @@ public class ApustuakErakutsiGUI extends JFrame {
 	        setVisible(true);
 	    }
 
-	  
-	    public static void main(String[] args) {
-	    	try {
-	    	blFacade= new BLFacadeImplementation(); //
-	    	Registered user = blFacade.getUser("MaiteUrreta");
-	    	WindowTable vt = new WindowTable(user);
-	    	vt.setVisible(true);
-	    	} catch (Exception e) {
-	    	e.printStackTrace();
-	    	}
-	    	}
-	   
+
 
 }

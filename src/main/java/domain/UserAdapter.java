@@ -8,7 +8,7 @@ public class UserAdapter extends AbstractTableModel{
 	private List<ApustuAnitza> apustuList;
 
     // Constructor to initialize the list of Registered users
-    public UserAdapter(List<Registered> userList) {
+    public UserAdapter(List<ApustuAnitza> userList) {
         this.apustuList = apustuList;
     }
 

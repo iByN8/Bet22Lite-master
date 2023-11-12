@@ -8,6 +8,7 @@ package gui;
 import javax.swing.*;
 
 import domain.Event;
+import domain.Registered;
 import businessLogic.BLFacade;
 
 import java.awt.Color;
@@ -215,7 +216,10 @@ public class MainGUI extends JFrame {
 			btnNewButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.btnNewButton.text")); //$NON-NLS-1$ //$NON-NLS-2$
 			btnNewButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					JFrame a = new ApustuakErakutsiGUI(null);
+					Registered r = new Registered("MaiteUrreta","1234",33243);
+					BLFacade facade = MainGUI.getBusinessLogic();
+					facade.findUser(r);
+					JFrame a = new ApustuakErakutsiGUI(r.getApustuAnitzak());
 					
 					a.setVisible(true);
 				}
