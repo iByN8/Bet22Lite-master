@@ -22,20 +22,21 @@ public class UserAdapter extends AbstractTableModel{
 
     public Object getValueAt(int row, int col) {
         ApustuAnitza ap = apustuList.get(row);
-       
-
+      
+        for (Apustua a : ap.getApustuak()) {
         switch (col) {
             case 0:
-                return 0;
+                return a.getKuota().getQuestion().getEvent();
             case 1:
-                return 1; 
+                return a.getKuota().getQuestion(); 
             case 2:
-            	return 2;
+            	return a.getKuota().getQuestion().getEvent().getEventDate();
             case 3:
-            	return 3;
+            	return a.getKuota();
             default:
                 return null;
         }
     }
-
+        return null;
+   }
 }

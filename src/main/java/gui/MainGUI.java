@@ -220,12 +220,12 @@ public class MainGUI extends JFrame {
 					BLFacade facade = MainGUI.getBusinessLogic();
 					facade.findUser(r);
 					JFrame a = new ApustuakErakutsiGUI(r.getApustuAnitzak());
-					
 					a.setVisible(true);
 				}
 			});
 		}
 		return btnNewButton;
 	}
+	
 } // @jve:decl-index=0:visual-constraint="0,0"
 
