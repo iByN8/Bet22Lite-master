@@ -5,6 +5,7 @@ import javax.swing.table.AbstractTableModel;
 
 public class UserAdapter extends AbstractTableModel{
     
+	private String[] columnNames = {"Event", "Question", "Event Date", "Bet" };
 	private List<ApustuAnitza> apustuList;
 
     // Constructor to initialize the list of Registered users
@@ -32,11 +33,15 @@ public class UserAdapter extends AbstractTableModel{
             case 2:
             	return a.getKuota().getQuestion().getEvent().getEventDate();
             case 3:
-            	return a.getKuota();
+            	return a.getApustuAnitza().getBalioa();
             default:
                 return null;
         }
     }
         return null;
    }
+    
+    public String getColumnName(int col) {
+    	return columnNames[col];
+    }
 }
