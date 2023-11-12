@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ApustuakErakutsiGUI extends JFrame {
-	  private JTable userTable;
+	  	private JTable userTable;
 	    private UserAdapter userAdapter;
 
 	    public ApustuakErakutsiGUI(List<ApustuAnitza> listaUsuarios) {
