@@ -46,6 +46,7 @@ public class MainGUI extends JFrame {
 	private JRadioButton rdbtnNewRadioButton_2;
 	private JPanel panel;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JButton btnNewButton;
 	
 	/**
 	 * This is the default constructor
@@ -94,6 +95,7 @@ public class MainGUI extends JFrame {
 			jContentPane = new JPanel();
 			jContentPane.setLayout(new GridLayout(4, 1, 0, 0));
 			jContentPane.add(getLblNewLabel());
+			jContentPane.add(getBtnNewButton());
 			jContentPane.add(getBoton3());
 			jContentPane.add(getBoton2());
 			jContentPane.add(getPanel());
@@ -208,5 +210,18 @@ public class MainGUI extends JFrame {
 		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("MainTitle"));
 	}
 	
+	private JButton getBtnNewButton() {
+		if (btnNewButton == null) {
+			btnNewButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.btnNewButton.text")); //$NON-NLS-1$ //$NON-NLS-2$
+			btnNewButton.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					JFrame a = new ApustuakErakutsiGUI(null);
+					
+					a.setVisible(true);
+				}
+			});
+		}
+		return btnNewButton;
+	}
 } // @jve:decl-index=0:visual-constraint="0,0"
 
